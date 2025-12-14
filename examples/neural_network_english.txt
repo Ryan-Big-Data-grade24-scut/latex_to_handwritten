@@ -1,0 +1,42 @@
+# Neural Network Overview
+
+A neural network is a machine learning model inspired by biological neural systems, consisting of interconnected artificial neurons.
+
+## Basic Structure
+
+A neuron receives input signals, computes a weighted sum, and produces an output through an activation function:
+
+$y = f(\sum_{i=1}^{n} w_i x_i + b)$
+
+Where:
+- $x_i$ are input signals
+- $w_i$ are weights
+- $b$ is bias
+- $f$ is activation function
+
+## Common Activation Functions
+
+1. **Sigmoid**: $f(x) = \frac{1}{1 + e^{-x}}$
+2. **ReLU**: $f(x) = \max(0, x)$
+3. **Tanh**: $f(x) = \tanh(x)$
+
+## Neural Network Training
+
+The core of training is adjusting weights via backpropagation to minimize loss function. Common loss functions include:
+
+- **Mean Squared Error**: $L = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$
+- **Cross Entropy Loss**: $L = -\frac{1}{n} \sum_{i=1}^{n} [y_i \log(\hat{y}_i) + (1 - y_i) \log(1 - \hat{y}_i)]$
+
+## Deep Learning
+
+Deep neural networks stack multiple hidden layers, enabling complex feature learning. They've achieved breakthroughs in computer vision, NLP, and more.
+
+## Applications
+
+- Image classification and recognition
+- Natural language processing
+- Speech recognition
+- Recommendation systems
+- Autonomous driving
+
+The power of neural networks lies in their ability to automatically learn features from data, eliminating the need for manual feature engineering.
