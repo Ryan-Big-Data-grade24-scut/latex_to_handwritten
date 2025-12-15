@@ -130,8 +130,8 @@ class LatexToHandwritten:
         # 渲染每一页
         output_files = []
         for i, page_items in enumerate(pages):
-            # 渲染单页内容
-            img = self._render_page(page_items, figsize, resolution, bg_color, text_color, randomness, mixed_rendering, random_fonts)
+            # 渲染单页内容，传递font参数
+            img = self._render_page(page_items, figsize, resolution, bg_color, text_color, randomness, mixed_rendering, random_fonts, font)
             
             # 生成输出文件名
             if len(pages) > 1:
@@ -417,7 +417,7 @@ class LatexToHandwritten:
         
         return pages
     
-    def _render_mixed_content(self, content_items, figsize, resolution, bg_color, text_color, randomness):
+    def _render_mixed_content(self, content_items, figsize, resolution, bg_color, text_color, randomness, font="IndieFlower-Regular"):
         """
         混合渲染：正文随机字体，公式传统渲染
         
@@ -428,6 +428,7 @@ class LatexToHandwritten:
             bg_color: str - 背景颜色
             text_color: str - 文字颜色
             randomness: float - 随机效果强度
+            font: str - 手写字体名称
         
         返回:
             PIL.Image - 渲染后的图片
@@ -516,11 +517,33 @@ class LatexToHandwritten:
                 # 公式内容，使用传统渲染
                 formula = item['content']
                 
-                # 设置matplotlib使用mathtext渲染公式
-                plt.rcParams['text.usetex'] = False
-                plt.rcParams['mathtext.fontset'] = 'stix'
-                plt.rcParams['font.family'] = ['sans-serif']
-                plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']
+                # 选择字体
+                font_path = self.available_fonts.get(font, None)
+                
+                # 设置matplotlib使用手写字体
+                if font_path:
+                    # 添加字体到matplotlib字体管理器
+                    font_manager.fontManager.addfont(font_path)
+                    
+                    # 获取字体名称
+                    font_name = font_manager.FontProperties(fname=font_path).get_name()
+                    
+                    # 设置matplotlib使用该字体
+                    plt.rcParams['text.usetex'] = False
+                    plt.rcParams['font.family'] = ['sans-serif']
+                    plt.rcParams['font.sans-serif'] = [font_name, 'SimHei', 'DejaVu Sans']
+                    
+                    # 设置数学公式也使用该字体
+                    plt.rcParams['mathtext.fontset'] = 'custom'
+                    plt.rcParams['mathtext.rm'] = font_name
+                    plt.rcParams['mathtext.it'] = f'{font_name}:italic'
+                    plt.rcParams['mathtext.bf'] = f'{font_name}:bold'
+                else:
+                    # 使用默认设置
+                    plt.rcParams['text.usetex'] = False
+                    plt.rcParams['mathtext.fontset'] = 'stix'
+                    plt.rcParams['font.family'] = ['sans-serif']
+                    plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']
                 
                 # 创建临时图来渲染LaTeX公式
                 temp_fig, temp_ax = plt.subplots(figsize=(8, 2), dpi=resolution)
@@ -579,7 +602,7 @@ class LatexToHandwritten:
         
         return img
     
-    def _render_page(self, content_items, figsize, resolution, bg_color, text_color, randomness, mixed_rendering=False, random_fonts=False):
+    def _render_page(self, content_items, figsize, resolution, bg_color, text_color, randomness, mixed_rendering=False, random_fonts=False, font="IndieFlower-Regular"):
         """
         单页渲染，选择合适的渲染路径
         
@@ -592,13 +615,14 @@ class LatexToHandwritten:
             randomness: float - 随机效果强度
             mixed_rendering: bool - 是否使用混合渲染
             random_fonts: bool - 是否每个字符随机使用不同字体
+            font: str - 手写字体名称
         
         返回:
             PIL.Image - 渲染后的图片
         """
         if mixed_rendering or (random_fonts and self.all_ttf_fonts):
             # 使用混合渲染，无论是指定了mixed_rendering还是random_fonts
-            img = self._render_mixed_content(content_items, figsize, resolution, bg_color, text_color, randomness)
+            img = self._render_mixed_content(content_items, figsize, resolution, bg_color, text_color, randomness, font)
         else:
             # 使用传统渲染
             # 创建一个临时图来渲染LaTeX
@@ -616,11 +640,33 @@ class LatexToHandwritten:
                 elif item['type'] == 'formula':
                     pure_text += f"${item['content']}$\n"
             
-            # 设置matplotlib使用mathtext渲染公式
-            plt.rcParams['text.usetex'] = False
-            plt.rcParams['mathtext.fontset'] = 'stix'
-            plt.rcParams['font.family'] = ['sans-serif']
-            plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']
+            # 选择字体
+            font_path = self.available_fonts.get(font, None)
+            
+            # 设置matplotlib使用手写字体
+            if font_path:
+                # 添加字体到matplotlib字体管理器
+                font_manager.fontManager.addfont(font_path)
+                
+                # 获取字体名称
+                font_name = font_manager.FontProperties(fname=font_path).get_name()
+                
+                # 设置matplotlib使用该字体
+                plt.rcParams['text.usetex'] = False
+                plt.rcParams['font.family'] = ['sans-serif']
+                plt.rcParams['font.sans-serif'] = [font_name, 'SimHei', 'DejaVu Sans']
+                
+                # 设置数学公式也使用该字体
+                plt.rcParams['mathtext.fontset'] = 'custom'
+                plt.rcParams['mathtext.rm'] = font_name
+                plt.rcParams['mathtext.it'] = f'{font_name}:italic'
+                plt.rcParams['mathtext.bf'] = f'{font_name}:bold'
+            else:
+                # 使用默认设置
+                plt.rcParams['text.usetex'] = False
+                plt.rcParams['mathtext.fontset'] = 'stix'
+                plt.rcParams['font.family'] = ['sans-serif']
+                plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']
             
             # 渲染LaTeX
             ax.text(0.5, 0.5, pure_text, fontsize=48, ha='center', va='center',
