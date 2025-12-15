@@ -1,0 +1,247 @@
+# Chapter 29 Magnetic fields due to currents
+## Problem 26
+Using the Pythagorean theorem, we have
+$ B^2 = B_1^2 + B_2^2 = \left(\frac{\mu_0 i_1 \phi}{4 \pi R}\right)^2 + \left(\frac{\mu_0 i_2}{2 \pi R}\right)^2$ 
+which, when thought of as the equation for a line in a $ B^2$  versus $ i_2^2$  graph, allows us to identify the first term as the “y-intercept” ($ 1×10^{-10}$ ) and the part of the second term that multiplies $ i_2^2$  as the “slope” ($ 5×10^{-10}$ ). The latter observation leads to
+$ 5.00 × 10^{-10} T^2 / A^2 = \left(\frac{\mu_0}{2 \pi R}\right)^2 = \left(\frac{4 \pi × 10^{-7} T \cdot m / A}{2 \pi R}\right)^2$ 
+or
+$ R^2 = \frac{4.00 × 10^{-14} T^2 \cdot m^2 / A^2}{5.00 × 10^{-10} T^2 / A^2} = 8.00 × 10^{-5} m^2 \Rightarrow R = 8.94 × 10^{-3} m \approx 8.9 mm$ 
+The other observation about the “y-intercept” determines the angle subtended by the arc:
+$ 1.00 × 10^{-10} T^2 = \left(\frac{\mu_0 i_1 \phi}{4 \pi R}\right)^2 = \left(\frac{(4 \pi × 10^{-7} T \cdot m / A)(0.50 A)}{4 \pi(8.94 × 10^{-3} m)}\right)^2 \phi^2 = (3.13 × 10^{-11} \phi^2) T^2$ 
+or
+$ \phi^2 = \frac{1.00 × 10^{-10} T^2}{3.13 × 10^{-11} T^2} = 3.19 \Rightarrow \phi = 1.79 rad \approx 1.8 rad$ 
+
+## Problem 32
+Initially we have
+$ B_i = \frac{\mu_0 i \phi}{4 \pi R} + \frac{\mu_0 i \phi}{4 \pi r}$ 
+using Eq. 29-9. In the final situation we use Pythagorean theorem and write
+$ B_f^2 = B_z^2 + B_y^2 = \left(\frac{\mu_0 i \phi}{4 \pi R}\right)^2 + \left(\frac{\mu_0 i \phi}{4 \pi r}\right)^2$ 
+If we square $ B_i$  and divide by $ B_f^2$ , we obtain
+$ \left(\frac{B_i}{B_f}\right)^2 = \frac{[(1/R)+(1/r)]^2}{(1/R)^2+(1/r)^2}$ 
+From the graph (see Fig.29-60(c), note the maximum and minimum values) we estimate $ B_i/B_f = 12/10 = 1.2$ , and this allows us to solve for $ r$  in terms of $ R$ :
+$ r = R \frac{1 \pm 1.2 \sqrt{2-1.2^2}}{1.2^2 - 1} = 2.3 cm \text{ or } 43.1 cm$ 
+Since we require $ r < R$ , then the acceptable answer is $ r = 2.3 cm$ 
+
+## Problem 33
+(a) Consider a section of the ribbon of thickness $ dx$  located a distance $ x$  away from point $ P$ . The current it carries is $ di = i dx/w$ , and its contribution to $ B_P$  is
+$ dB_P = \frac{\mu_0 di}{2 \pi x} = \frac{\mu_0 i dx}{2 \pi x w}$ 
+Integrating over the length of the ribbon, we obtain
+$ B_P = \int dB_P = \frac{\mu_0 i}{2 \pi w} \int_d^{d+w} \frac{dx}{x} = \frac{\mu_0 i}{2 \pi w} ln\left(1+\frac{w}{d}\right) = \frac{(4 \pi × 10^{-7} T \cdot m / A)(4.61 × 10^{-6} A)}{2 \pi(0.0491 m)} ln\left(1+\frac{0.0491}{0.0216}\right) = 2.23 × 10^{-11} T$ 
+and $ \vec{B}_P$  points upward. In unit-vector notation, $ \vec{B}_P = (2.23 × 10^{-11} T)\hat{j}$ 
+(b) In the limit where $ d\gg w$ , using $ ln(1+x)=x-x^2/2+\cdots$ , the magnetic field becomes
+$ B_P = \frac{\mu_0 i}{2 \pi w} ln\left(1+\frac{w}{d}\right) \approx \frac{\mu_0 i}{2 \pi w} \cdot \frac{w}{d} = \frac{\mu_0 i}{2 \pi d}$ 
+which is the same as that due to a thin wire.
+
+## Problem 41
+The magnitudes of the forces on the sides of the rectangle that are parallel to the long straight wire (with $ i_1 = 30.0 A$ ) are computed using Eq. 29-13, but the force on each of the sides lying perpendicular to it (along our y axis, with the origin at the top wire and $ +y$  downward) would be figured by integrating as follows:
+$ F_{\perp sides} = \int_a^{a+b} \frac{i_2 \mu_0 i_1}{2 \pi y} dy$ 
+Fortunately, these forces on the two perpendicular sides of length $ b$  cancel out. For the remaining two (parallel) sides of length $ L$ , we obtain
+$ F = \frac{\mu_0 i_1 i_2 L}{2 \pi} \left(\frac{1}{a}-\frac{1}{a+d}\right) = \frac{\mu_0 i_1 i_2 b}{2 \pi a(a+b)} = \frac{(4 \pi × 10^{-7} T \cdot m / A)(30.0 A)(20.0 A)(8.00 cm)(300 × 10^{-2} m)}{2 \pi(1.00 cm+8.00 cm)} = 3.20 × 10^{-3} N$ 
+and $ \vec{F}$  points toward the wire, or $ +\hat{j}$ . That is, $ \vec{F} = (3.20 × 10^{-3} N)\hat{j}$  in unit-vector notation.
+
+## Problem 43
+We refer to the (very large) wire length as $ \ell$  and seek to compute the flux per meter: $ \Phi_B/\ell$ . Using the right-hand rule discussed in Chapter 29, we see that the net field in the region between the axes of antiparallel currents is the addition of the magnitudes of their individual fields, as given by Eq. 29-17 and Eq. 29-20. There is an evident reflection symmetry in the problem, where the plane of symmetry is midway between the two wires (at $ x=d/2$ ); the net field at any point $ 0<x<<d/2$  is the same at its “mirror image” point $ d-x$ . The central axis of one of the wires passes through the origin, and that of the other passes through $ x=d$ . We make use of the symmetry by integrating over $ 0<x<<d/2$  and then multiplying by 2:
+$ \Phi_B = 2\int_0^{d/2} B dA = 2\int_0^a B(\ell dx) + 2\int_a^{d/2} B(\ell dx)$ 
+where $ d=0.0025 m$  is the diameter of each wire. We will use $ r$  instead of $ x$  in the following steps. Thus, using the equations from Ch. 29 referred to above, we find
+$ \frac{\Phi_B}{\ell} = 2\int_0^a \left(\frac{\mu_0 i}{2 \pi a^2}r + \frac{\mu_0 i}{2 \pi(d-r)}\right)dr + 2\int_a^{d/2} \left(\frac{\mu_0 i}{2 \pi r} + \frac{\mu_0 i}{2 \pi(d-r)}\right)dr = \frac{\mu_0 i}{2 \pi}\left(1-2 ln\left(\frac{d-a}{d}\right)\right) + \frac{\mu_0 i}{\pi} ln\left(\frac{d-a}{a}\right)$ 
+where the first term is the flux within the wires and will be neglected (as the problem suggests). Thus, the flux is approximately $ \Phi_B \approx \mu_0 i \ell/\pi ln((d-a)/a)$ . Now, we use Eq. 30-33 (with $ N=1$ ) to obtain the inductance per unit length:
+$ \frac{L}{\ell} = \frac{\Phi_B}{\ell i} = \frac{\mu_0}{\pi} ln\left(\frac{d-a}{a}\right) = \frac{(4 \pi × 10^{-7} T \cdot m / A)}{\pi} ln\left(\frac{142-1.53}{1.53}\right) = 1.81 × 10^{-6} H/m$ 
+
+## Problem 48
+(a) We designate the wire along $ y=r_A=0.100 m$  wire A and the wire along $ y=r_B=0.050 m$  wire B. Using Eq. 29-4, we have
+$ \vec{B}_{net} = \vec{B}_A + \vec{B}_B = -\frac{\mu_0 i_A}{2 \pi r_A}\hat{k} - \frac{\mu_0 i_B}{2 \pi r_B}\hat{k} = (-52.0 × 10^{-6} T)\hat{k}$ 
+(b) This will occur for some value $ r_B < y < r_A$  such that
+$ \frac{\mu_0 i_A}{2 \pi(r_A - y)} = \frac{\mu_0 i_B}{2 \pi(y - r_B)}$ 
+Solving, we find $ y=13/160≈0.0813 m$ 
+(c) We eliminate the $ y<r_B$  possibility due to wire B carrying the larger current. We expect a solution in the region $ y>r_A$  where
+$ \frac{\mu_0 i_A}{2 \pi(y - r_A)} = \frac{\mu_0 i_B}{2 \pi(y - r_B)}$ 
+Solving, we find $ y=7/40≈0.0175 m$ 
+
+## Problem 53
+(a) Immediately after the switch is closed, $ \varepsilon - \varepsilon_L = iR$ . But $ i=0$  at this instant, so $ \varepsilon_L = \varepsilon$ , or $ \varepsilon_L/\varepsilon = 1.00$ 
+(b) $ \varepsilon_L(t) = \varepsilon e^{-t/\tau_L} = \varepsilon e^{-2.0\tau_L/\tau_L} = \varepsilon e^{-2.0} = 0.135\varepsilon$ , or $ \varepsilon_L/\varepsilon = 0.135$ 
+(c) From $ \varepsilon_L(t) = \varepsilon e^{-t/\tau_L}$  we obtain
+$ \frac{t}{\tau_L} = ln\left(\frac{\varepsilon}{\varepsilon_L}\right) = ln2 \Rightarrow t = \tau_L ln2 = 0.693\tau_L \Rightarrow t/\tau_L = 0.693$ 
+
+## Problem 58
+(a) From Fig. 29-56(a) be the positive direction, the net field is
+$ B = \frac{\mu_0 i_1 \phi}{4 \pi R} - \frac{\mu_0 i_2}{2 \pi(R/2)}$ 
+from Eqs. 29-9 and 29-4. Referring to Fig. 29-56, we see that $ B=0$  when $ i_2=0.5 A$ , so (solving the above expression with B set equal to zero) we must have
+$ \phi = 4(i_2/i_1) = 4(0.5/2) = 1.00 rad (or 57.3^\circ)$ 
+
+
+# Chapter 30 Induction and Inductance
+## Problem 11
+(a) It should be emphasized that the result, given in terms of $ sin(2 \pi f t)$ , could as easily be given in terms of $ cos(2 \pi f t)$  or even $ cos(2 \pi f t+\phi)$  where $ \phi$  is a phase constant as discussed in Chapter 15. The angular position $ \theta$  of the rotating coil is measured from some reference line (or plane), and which line one chooses will affect whether the magnetic flux should be written as $ BA cos\theta$ , $ BA sin\theta$  or $ BA cos(\theta+\phi)$ . Here our choice is such that $ \Phi_B = BA cos\theta$ . Since the coil is rotating steadily, $ \theta$  increases linearly with time. Thus, $ \theta = \omega t$  (equivalent to $ \theta = 2 \pi f t$ ) if $ \theta$  is understood to be in radians (and $ \omega$  would be the angular velocity). Since the area of the rectangular coil is $ A=ab$ , Faraday’s law leads to
+$ \varepsilon = -N\frac{d(BA cos\theta)}{dt} = -NBA\frac{d cos(2 \pi f t)}{dt} = NBA 2 \pi f sin(2 \pi f t)$ 
+which is the desired result, shown in the problem statement. The second way this is written ($ \varepsilon_0 sin(2 \pi f t)$ ) is meant to emphasize that the voltage output is sinusoidal (in its time dependence) and has an amplitude of $ \varepsilon_0 = 2 \pi f NabB$ 
+(b) We solve
+$ \varepsilon_0 = 150 V = 2 \pi f NabB$ 
+when $ f=60.0 rev/s$  and $ B=0.500 T$ . The three unknowns are $ N,a,$  and $ b$  which occur in a product; thus, we obtain $ Nab = 0.796 m^2$ 
+
+## Problem 14
+Figure 30-42(b) demonstrates that $ dB/dt$  (the slope of that line) is $ 0.003 T/s$ . Thus, in absolute value, Faraday’s law becomes
+$ \varepsilon = -\frac{d\Phi_B}{dt} = -\pi r^2 \frac{dB}{dt}$ 
+where $ A=8×10^{-4} m^2$ . We related the induced emf to resistance and current using Ohm’s law. The current is estimated from Fig. 30-42(c) to be $ i=dq/dt=0.002 A$  (the slope of that line). Therefore, the resistance of the loop is
+$ R = \frac{|\varepsilon|}{i} = \frac{A|dB/dt|}{i} = \frac{(8.0 × 10^{-4} m^2)(0.0030 T/s)}{0.0020 A} = 0.0012 \Omega$ 
+
+## Problem 27
+(a) The “height” of the triangular area enclosed by the rails and bar is the same as the distance traveled in time $ t$ : $ d=vt$ , where $ v=5.20 m/s$ . We also note that the "base" of that triangle (the distance between the intersection points of the bar with the rails) is $ 2d$ . Thus, the area of the triangle is
+$ A = \frac{1}{2}(base)(height) = \frac{1}{2}(2vt)(vt) = v^2t^2$ 
+Since the field is a uniform $ B=0.350 T$ , then the magnitude of the flux (in SI units) is
+$ \Phi_B = BA = (0.350)(5.20)^2t^2 = 9.46t^2$ 
+At $ t=3.00 s$ , we obtain $ \Phi_B = 85.2 Wb$ 
+(b) The magnitude of the emf is the (absolute value of) Faraday’s law:
+$ \varepsilon = \frac{d\Phi_B}{dt} = 9.46\frac{dt^2}{dt} = 18.9t$ 
+in SI units. At $ t=3.00 s$ , this yields $ \varepsilon = 56.8 V$ 
+(c) Our calculation in part (b) shows that $ n=1$ 
+
+## Problem 28
+(a) First, we write $ \Phi_B = BA cos\theta$ . We note that the angular position $ \theta$  of the rotating coil is measured from some reference line or plane, and we are implicitly making such a choice by writing the magnetic flux as $ BA cos\theta$  (as opposed to, say, $ BA sin\theta$ ). Since the coil is rotating steadily, $ \theta$  increases linearly with time. Thus, $ \theta = \omega t$  or $ \theta = 2 \pi f t$  if we take $ t=0$  to be a moment when the arc is leads to
+$ \varepsilon = -\frac{d\Phi_B}{dt} = -B\frac{dA}{dt} = -B\frac{d(A_0+(\pi a^2/2)cos\theta)}{dt} = -B\frac{\pi a^2}{2}\frac{d cos(2 \pi f t)}{dt}$ 
+which yields $ \varepsilon = B \pi^2 a^2 f sin(2 \pi f t)$ . This (due to the sinusoidal dependence) reinforces the conclusion in part (a) and also (due to the factors in front of the sine) provides the voltage amplitude:
+$ \varepsilon_m = B \pi^2 a^2 f = (0.020 T)\pi^2(0.020 m)^2(40/s) = 3.2 × 10^{-3} V$ 
+(b) The frequency is $ f = 40 Hz$  as given, and the angular frequency $ \omega = 2 \pi f = 80 \pi rad/s$ 
+
+## Problem 38
+(a) Before the fuse blows, the current through the resistor remains zero. We apply the loop theorem to the battery-fuse-inductor loop: $ \varepsilon - L di/dt = 0$ . So $ i = \varepsilon t/L$ . As the fuse blows at $ t=t_0$ , $ i=i_0=3.0 A$ . Thus,
+$ t_0 = \frac{i_0 L}{\varepsilon} = \frac{(3.0 A)(5.0 H)}{10 V} = 1.5 s$ 
+(b) We do not show the graph here; qualitatively, it would be similar to Fig. 30-15
+
+## Problem 42
+(a) The self-inductance per meter is
+$ \frac{L}{\ell} = \mu_0 n^2 A = (4 \pi × 10^{-7} H/m)(100 turns/cm)^2(\pi)(1.6 cm)^2 = 0.10 H/m$ 
+(b) The induced emf per meter is
+$ \frac{\varepsilon}{\ell} = \frac{L}{\ell}\frac{di}{dt} = 0.10 H/m × 13 A/s = 1.3 V/m$ 
+
+## Problem 71
+(a) The energy delivered by the battery is the integral of Eq. 28-14 (where we use Eq. 30-41 for the current):
+$ \int_0^t P_{battery}dt = \int_0^t \frac{\varepsilon^2}{R}(1-e^{-Rt/L})dt = \frac{\varepsilon^2}{R}\left[t+\frac{L}{R}(e^{-Rt/L}-1)\right] = \frac{(10.0 V)^2}{6.70 \Omega}\left[2.00 s+\frac{(5.50 H)(e^{-(6.70 \Omega)(2.00 s)/5.50 H}-1)}{6.70 \Omega}\right] = 18.7 J$ 
+(b) The energy stored in the magnetic field is given by Eq. 30-49:
+$ U_B = \frac{1}{2}Li^2(t) = \frac{1}{2}L\left(\frac{\varepsilon}{R}(1-e^{-Rt/L})\right)^2 = \frac{1}{2}(5.50 H)\left(\frac{10.0 V}{6.70 \Omega}(1-e^{-(6.70 \Omega)(2.00 s)/5.50 H})\right)^2 = 5.10 J$ 
+(c) The difference of the previous two results gives the amount “lost” in the resistor: $ 18.7 J - 5.10 J = 13.6 J$ 
+
+## Problem 77
+(a) The circuit has a resistor and a capacitor (but no inductor). Since the capacitive reactance decreases with frequency, then the asymptotic value of $ Z$  must be the resistance: $ R=500 \Omega$ 
+(b) We describe three methods here (each using information from different points on the graph):
+method 1: At $ \omega_d=50 rad/s$ , we have $ Z≈700 \Omega$ , which gives $ C=(\omega_d \sqrt{Z^2-R^2})^{-1}=41 \mu F$ 
+method 2: At $ \omega_d=50 rad/s$ , we have $ X_C≈500 \Omega$ , which gives $ C=(\omega_d X_C)^{-1}=40 \mu F$ 
+method 3: At $ \omega_d=250 rad/s$ , we have $ X_C≈100 \Omega$ , which gives $ C=(\omega_d X_C)^{-1}=40 \mu F$ 
+
+
+# Chapter 31 Electromagnetic Oscilations and AC
+## Problem 13
+(a) The charge (as a function of time) is given by $ q=Q sin\omega t$ , where $ Q$  is the maximum charge on the capacitor and $ \omega$  is the angular frequency of oscillation. A sine function was chosen so that $ q=0$  at time $ t=0$ . The current (as a function of time) is
+$ i = \frac{dq}{dt} = \omega Q cos\omega t$ 
+and at $ t=0$ , it is $ I=\omega Q$ . Since $ \omega = 1/\sqrt{LC}$ ,
+$ Q = I\sqrt{LC} = (2.00 A)\sqrt{(3.00 × 10^{-3} H)(2.70 × 10^{-6} F)} = 1.80 × 10^{-4} C$ 
+(b) The energy stored in the capacitor is given by
+$ U_E = \frac{q^2}{2C} = \frac{Q^2 sin^2\omega t}{2C}$ 
+and its rate of change is
+$ \frac{dU_E}{dt} = \frac{Q^2 \omega sin\omega t cos\omega t}{C}$ 
+We use the trigonometric identity $ cos\omega t sin\omega t = \frac{1}{2}sin(2\omega t)$  to write this as
+$ \frac{dU_E}{dt} = \frac{\omega Q^2}{2C} sin2\omega t$ 
+The greatest rate of change occurs when $ sin(2\omega t)=1$  or $ 2\omega t = \pi/2$  rad. This means
+$ t = \frac{\pi}{4 \omega} = \frac{\pi}{4}\sqrt{LC} = \frac{\pi}{4}\sqrt{(3.00 × 10^{-3} H)(2.70 × 10^{-6} F)} = 7.07 × 10^{-5} s$ 
+(c) Substituting $ \omega=2 \pi/T$  and $ sin(2\omega t)=1$  into $ dU_E/dt=(\omega Q^2/2C)sin(2\omega t)$ , we obtain
+$ \left(\frac{dU_E}{dt}\right)_{max} = \frac{2 \pi Q^2}{2TC} = \frac{\pi Q^2}{TC}$ 
+Now $ T=2 \pi\sqrt{LC}=2 \pi\sqrt{(3.00 × 10^{-3} H)(2.70 × 10^{-6} F)}=5.655 × 10^{-4} s$ , so
+$ \left(\frac{dU_E}{dt}\right)_{max} = \frac{\pi(1.80 × 10^{-4} C)^2}{(5.655 × 10^{-4} s)(2.70 × 10^{-6} F)} = 66.7 W$ 
+We note that this is a positive result, indicating that the energy in the capacitor is indeed increasing at $ t=T/8$ 
+
+## Problem 27
+(a) The energy per unit volume associated with the magnetic field is
+$ u_B = \frac{B^2}{2 \mu_0} = \frac{1}{2 \mu_0}\left(\frac{\mu_0 i}{2 \pi R}\right)^2 = \frac{\mu_0 i^2}{8 \pi^2 R^2} = \frac{(4 \pi × 10^{-7} H/m)(10 A)^2}{8 \pi^2(2.5 × 10^{-3} m/2)^2} = 1.0 J/m^3$ 
+(b) The electric energy density is
+$ u_E = \frac{1}{2}\varepsilon_0 E^2 = \frac{\varepsilon_0}{2}(\rho J)^2 = \frac{\varepsilon_0}{2}\left(\frac{iR}{\ell}\right)^2 = \frac{1}{2}(8.85 × 10^{-12} F/m)[(10 A)(3.3 \Omega/10^3 m)]^2 = 4.8 × 10^{-15} J/m^3$ 
+Here we used $ J=i/A$  and $ R=\rho \ell/A$  to obtain $ \rho J = iR/\ell$ 
+
+## Problem 32
+(a) We use $ I=\varepsilon/X_C = \omega_d C \varepsilon$ 
+$ I = \omega_d C \varepsilon_m = 2 \pi f_d C \varepsilon_m = 2 \pi(1.00 × 10^3 Hz)(1.50 × 10^{-6} F)(30.0 V) = 0.283 A$ 
+(b) $ I = 2 \pi(8.00 × 10^3 Hz)(1.50 × 10^{-6} F)(30.0 V) = 2.26 A$ 
+
+## Problem 34
+(a) The circuit consists of one generator across one capacitor; therefore, $ \varepsilon_m = V_C$ . Consequently, the current amplitude is
+$ I = \frac{\varepsilon_m}{X_C} = \omega C \varepsilon_m = (377 rad/s)(4.15 × 10^{-6} F)(25.0 V) = 3.91 × 10^{-2} A$ 
+(b) When the current is at a maximum, the charge on the capacitor is changing at its largest rate. This happens not when it is fully charged ($ \pm q_{max}$ ), but rather as it passes through the (momentary) states of being uncharged ($ q=0$ ). Since $ q=CV$ , then the voltage across the capacitor (and at the generator, by the loop rule) is zero when the current is at a maximum. Stated more precisely, the time-dependent emf $ \varepsilon(t)$  and current $ i(t)$  have a $ \phi=-90^\circ$  phase relation, implying $ \varepsilon(t)=0$  when $ i(t)=I$ . The fact that $ \phi=-90^\circ=-\pi/2$  rad is used in part (c)
+(c) Consider Eq. 31-28 with $ \varepsilon = -\frac{1}{2}\varepsilon_m$ . In order to satisfy this equation, we require $ sin(\omega_d t) = -1/2$ . Now we note that the problem states that $ \varepsilon$  is increasing in magnitude which (since it is already negative) means that it is becoming more negative. Thus, differentiating Eq. 31-28 with respect to time (and demanding the result be negative) we must also require $ cos(\omega_d t)<0$ . These conditions imply that $ \omega_d t$  must equal $ (2n\pi-5\pi/6)$  [n=integer]. Consequently, Eq. 31-29 yields (for all values of n)
+$ i = I sin\left(2n\pi - \frac{5\pi}{6}+\frac{\pi}{2}\right) = (3.91 × 10^{-3} A)\left(-\frac{\sqrt{3}}{2}\right) = -3.38 × 10^{-2} A$ 
+or $ |i| = 3.38 × 10^{-2} A$ 
+
+## Problem 45
+(a) For this circuit, the driving angular frequency is
+$ \omega_d = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{(1.00 H)(20.0 × 10^{-6} F)}} = 224 rad/s$ 
+(b) When $ \omega_d = \omega$  the impedance is $ Z=R$ , and the current amplitude is
+$ I = \frac{\varepsilon_m}{R} = \frac{30.0 V}{5.00 \Omega} = 6.00 A$ 
+(c) We want to find the (positive) values of $ \omega_d$  for which $ I = \varepsilon_m/2R$ :
+$ \frac{\varepsilon_m}{\sqrt{R^2+(\omega_d L - 1/\omega_d C)^2}} = \frac{\varepsilon_m}{2R}$ 
+This may be rearranged to give
+$ (\omega_d L - 1/\omega_d C)^2 = 3R^2$ 
+Taking the square root of both sides (acknowledging the two $ \pm$  roots) and multiplying by $ \omega_d C$ , we obtain
+$ \omega_d^2(LC) \pm \omega_d(\sqrt{3}CR)-1 = 0$ 
+Using the quadratic formula, we find the smallest positive solution
+$ \omega_2 = \frac{-\sqrt{3}CR + \sqrt{3C^2R^2+4LC}}{2LC} = \frac{-\sqrt{3}(20.0 × 10^{-6} F)(5.00 \Omega)}{2(1.00 H)(20.0 × 10^{-6} F)} + \frac{\sqrt{3(20.0 × 10^{-6} F)^2(5.00 \Omega)^2+4(1.00 H)(20.0 × 10^{-6} F)}}{2(1.00 H)(20.0 × 10^{-6} F)} = 219 rad/s$ 
+(d) The largest positive solution
+$ \omega_1 = \frac{+\sqrt{3}CR + \sqrt{3C^2R^2+4LC}}{2LC} = \frac{+\sqrt{3}(20.0 × 10^{-6} F)(5.00 \Omega)}{2(1.00 H)(20.0 × 10^{-6} F)} + \frac{\sqrt{3(20.0 × 10^{-6} F)^2(5.00 \Omega)^2+4(1.00 H)(20.0 × 10^{-6} F)}}{2(1.00 H)(20.0 × 10^{-6} F)} = 228 rad/s$ 
+(e) The fractional width is
+$ \frac{\omega_1-\omega_2}{\omega} = \frac{228 rad/s-219 rad/s}{224 rad/s} = 0.040$ 
+
+## Problem 48
+(a) A sketch of the phasor diagram is shown to the right
+(b) We have $ V_L=V_R$  which implies
+$ IR=IX_L \to R = \omega_d L$ 
+which yields $ f = \omega_d/2\pi = R/2\pi L = 318 Hz$ 
+(c) $ \phi = tan^{-1}(V_L/V_R) = +45^\circ$ 
+(d) $ \omega_d = R/L = 2.00 × 10^3 rad/s$ 
+(e) $ I=(6 V)/\sqrt{R^2+X_L^2}=3/(40\sqrt{2})≈53.0 mA$ 
+
+
+# Chapter 32 Maxwell's equations
+## Problem 4
+From Gauss’ law for magnetism, the flux through $ S_1$  is equal to that through $ S_2$ , the portion of the $ xz$  plane that lies within the cylinder. Here the normal direction of $ S_2$  is $ +y$ . Therefore,
+$ \Phi_B(S_1) = \Phi_B(S_2) = \int_{-r}^r B(x)Ldx = 2\int_{-r}^r B_{left}(x)Ldx = 2\int_{-r}^r \frac{\mu_0 i}{2 \pi} \frac{1}{2r-x}Ldx = \frac{\mu_0 i L}{\pi} ln3$ 
+
+## Problem 11
+(a) We note that we obtain the maximum value in Eq. 32-28 when we set
+$ t = \frac{\pi}{2 \omega_d} = \frac{1}{4f} = \frac{1}{4(60)} = 0.00417 s$ 
+or 4.17 ms. The result is $ \varepsilon_m sin(\pi/2)=\varepsilon_m sin(90^\circ)=36.0 V$ 
+(b) At $ t=4.17 ms$ , the current is
+$ i = I sin(\omega_d t - \phi) = I sin(90^\circ - (-24.3^\circ)) = (0.164 A)cos(24.3^\circ) = 0.1495 A≈0.150 A$ 
+Ohm’s law directly gives
+$ v_R = iR = (0.1495 A)(200 \Omega)=29.9 V$ 
+(c) The capacitor voltage phasor is $ 90^\circ$  less than that of the current. Thus, at $ t=4.17 ms$ , we obtain
+$ v_C = I sin(90^\circ - (-24.3^\circ)-90^\circ)X_C = IX_C sin(24.3^\circ) = (0.164 A)(177 \Omega)sin(24.3^\circ)=11.9 V$ 
+(d) The inductor voltage phasor is $ 90^\circ$  more than that of the current. Therefore, at $ t=4.17 ms$ , we find
+$ v_L = I sin(90^\circ - (-24.3^\circ)+90^\circ)X_L = -IX_L sin(24.3^\circ) = -(0.164 A)(86.7 \Omega)sin(24.3^\circ)=-5.85 V$ 
+(e) Our results for parts (b), (c) and (d) add to give 36.0 V, the same as the answer for part (a)
+
+## Problem 24
+(a) Inside we have (by Eq. 32-16) $ B=\mu_0 i_d r_1/2 \pi R^2$ , where $ r_1=0.0200 m$ , $ R=0.0300 m$  and the displacement current is given by Eq. 32-38 (in SI units):
+$ i_d = \varepsilon_0 \frac{d\Phi_E}{dt} = (8.85 × 10^{-12} C^2/N·m^2)(3.00 × 10^{-3} V/m·s) = 2.66 × 10^{-14} A$ 
+Thus, we find
+$ B = \frac{\mu_0 i_d r_1}{2 \pi R^2} = \frac{(4 \pi × 10^{-7} T·m/A)(2.66 × 10^{-14} A)(0.0200 m)}{2 \pi(0.0300 m)^2} = 1.18 × 10^{-19} T$ 
+(b) Outside we have (by Eq. 32-17) $ B=\mu_0 i_d/2 \pi r_2$  where $ r_2=0.0500 cm$ . Here we obtain
+$ B = \frac{\mu_0 i_d}{2 \pi r_2} = \frac{(4 \pi × 10^{-7} T·m/A)(2.66 × 10^{-14} A)}{2 \pi(0.0500 m)} = 1.06 × 10^{-19} T$ 
+
+## Problem 27
+(a) In region a of the graph,
+$ |i_d| = \varepsilon_0\left|\frac{d\Phi_E}{dt}\right| = \varepsilon_0 A\left|\frac{dE}{dt}\right| = (8.85 × 10^{-12} F/m)(1.6 m^2)\left|\frac{4.5 × 10^5 N/C-6.0 × 10^5 N/C}{4.0 × 10^{-6} s}\right| = 0.71 A$ 
+(b) $ i_d \propto dE/dt=0$ 
+(c) In region c of the graph,
+$ |i_d| = \varepsilon_0 A\left|\frac{dE}{dt}\right| = (8.85 × 10^{-12} F/m)(1.6 m^2)\left|\frac{-4.0 × 10^5 N/C}{2.0 × 10^{-6} s}\right| = 2.8 A$ 
+
+## Problem 36
+Combining Eq. 32-27 with Eqs. 32-22 and 32-23, we see that the energy difference is
+$ \Delta U = 2\mu_B B$ 
+where $ \mu_B$  is the Bohr magneton (given in Eq. 32-25). With $ \Delta U=6.00 × 10^{-25} J$ , we obtain $ B=32.3 mT$ 
+
+## Problem 38
+An electric field with circular field lines is induced as the magnetic field is turned on. Suppose the magnetic field increases linearly from zero to $ B$  in time $ t$ . According to Eq. 31-27, the magnitude of the electric field at the orbit is given by
+$ E = \left(\frac{r}{2}\right)\frac{dB}{dt} = \left(\frac{r}{2}\right)\frac{B}{t}$ 
+where $ r$  is the radius of the orbit. The induced electric field is tangent to the orbit and changes the speed of the electron, the change in speed being given by
+$ \Delta v = at = \frac{eE}{m_e}t = \left(\frac{e}{m_e}\right)\left(\frac{r}{2}\right)\left(\frac{B}{t}\right)t = \frac{erB}{2m_e}$ 
+The average current associated with the circulating electron is $ i=ev/2 \pi r$  and the dipole moment is
+$ \mu = Ai = (\pi r^2)\left(\frac{ev}{2 \pi r}\right) = \frac{1}{2}evr$ 
+The change in the dipole moment is
+$ \Delta \mu = \frac{1}{2}er\Delta v = \frac{1}{2}er\left(\frac{erB}{2m_e}\right) = \frac{e^2 r^2 B}{4m_e}$ 
