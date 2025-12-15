@@ -1,0 +1,28 @@
+{
+    "default": {
+        "font": "IndieFlower-Regular",
+        "resolution": 200,
+        "randomness": 0.05,
+        "a4": false,
+        "markdown": false,
+        "random_fonts": false,
+        "mixed_rendering": false,
+        "process_latex_markers": false,
+        "max_chars": 50,
+        "max_score": 15
+    },
+    "presets": {
+        "all_enabled": {
+            "font": "IndieFlower-Regular",
+            "resolution": 200,
+            "randomness": 0.05,
+            "a4": true,
+            "markdown": true,
+            "random_fonts": true,
+            "mixed_rendering": true,
+            "process_latex_markers": true,
+            "max_chars": 50,
+            "max_score": 5
+        }
+    }
+}
