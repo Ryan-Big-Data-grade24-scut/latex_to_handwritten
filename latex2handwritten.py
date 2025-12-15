@@ -79,7 +79,7 @@ class LatexToHandwritten:
     def convert_latex(self, latex, output_file="output.png", font="IndieFlower-Regular", 
                      resolution=200, width=800, height=200, randomness=0.05,
                      bg_color="white", text_color="black", format="png", a4=False,
-                     markdown=False, random_fonts=False):
+                     markdown=False, random_fonts=False, mixed_rendering=False, max_chars=50, max_score=15):
         """
         将LaTeX公式转换为手写风格图片
         
@@ -97,6 +97,9 @@ class LatexToHandwritten:
             a4: bool - 是否使用A4格式（210mm × 297mm）
             markdown: bool - 是否将内容作为markdown处理
             random_fonts: bool - 是否每个字符随机使用不同字体
+            mixed_rendering: bool - 是否使用混合渲染（正文随机字体，公式传统渲染）
+            max_chars: int - 每行最大字符数
+            max_score: int - 每页最大分数（普通行1分，公式行2分）
         """
         # 如果是markdown，先转换为纯文本
         if markdown:
@@ -118,83 +121,32 @@ class LatexToHandwritten:
             # 像素转英寸（1英寸=100像素默认，根据resolution调整）
             figsize = (width / resolution, height / resolution)
         
-        # 如果使用随机字体，每个字符单独渲染
-        if random_fonts and self.all_ttf_fonts:
-            # 使用PIL直接渲染，每个字符随机字体
-            img = self._render_with_random_fonts(latex, resolution, a4, figsize, bg_color, text_color, randomness)
-        else:
-            # 使用传统的matplotlib渲染
-            # 选择字体
-            font_path = self.available_fonts.get(font, None)
+        # 分割文本和公式
+        content_items = self._split_text_formulas(latex)
+        
+        # 分页处理
+        pages = self._paginate_content(content_items, max_score)
+        
+        # 渲染每一页
+        output_files = []
+        for i, page_items in enumerate(pages):
+            # 渲染单页内容
+            img = self._render_page(page_items, figsize, resolution, bg_color, text_color, randomness, mixed_rendering, random_fonts)
             
-            # 如果找到了字体文件，配置matplotlib使用该字体
-            if font_path:
-                # 添加字体到matplotlib字体管理器
-                font_manager.fontManager.addfont(font_path)
-                
-                # 获取字体名称
-                font_name = font_manager.FontProperties(fname=font_path).get_name()
-                
-                # 设置matplotlib使用该字体
-                plt.rcParams['font.family'] = ['sans-serif']
-                plt.rcParams['font.sans-serif'] = [font_name, 'SimHei']
-                
-                # 设置数学公式也使用该字体
-                plt.rcParams['mathtext.fontset'] = 'custom'
-                plt.rcParams['mathtext.rm'] = font_name
-                plt.rcParams['mathtext.it'] = f'{font_name}:italic'
-                plt.rcParams['mathtext.bf'] = f'{font_name}:bold'
-            
-            # 创建一个临时图来渲染LaTeX
-            fig, ax = plt.subplots(figsize=figsize, dpi=resolution)
-            
-            # 设置背景颜色
-            fig.patch.set_facecolor(bg_color)
-            ax.set_facecolor(bg_color)
-            
-            # 渲染LaTeX公式（支持多行）
-            # 将\n替换为换行符，支持多行输入
-            latex = latex.replace('\\n', '\n')
-            
-            # 根据内容类型调整字体大小
-            # 对于包含文本和公式的混合内容，使用稍小的字体以适应多行
-            if '\\frac' in latex or '\\sum' in latex or '\\int' in latex or '\\max' in latex:
-                # 包含复杂公式，使用适中字体
-                font_size = 36
+            # 生成输出文件名
+            if len(pages) > 1:
+                # 多页输出，添加页码
+                base_name, ext = os.path.splitext(output_file)
+                page_output_file = f"{base_name}_page_{i+1}{ext}"
             else:
-                # 简单内容，使用较大字体
-                font_size = 48
-                
-            # 对于A4格式，使用更大的字体增强手写效果
-            if a4:
-                font_size = 42
-                
-            ax.text(0.5, 0.5, latex, fontsize=font_size, ha='center', va='center',
-                    color=text_color, transform=ax.transAxes, linespacing=1.8)
+                # 单页输出
+                page_output_file = output_file
             
-            # 隐藏坐标轴
-            ax.axis('off')
-            
-            # 直接使用subplots_adjust调整边距，避免tight_layout警告
-        plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+            # 保存最终图片
+            img.save(page_output_file, format=format)
+            output_files.append(page_output_file)
         
-        # 保存临时图片到内存
-        temp_buffer = BytesIO()
-        plt.savefig(temp_buffer, dpi=resolution, format='png', bbox_inches='tight', pad_inches=0.1, transparent=(bg_color == 'transparent'))
-        temp_buffer.seek(0)
-        plt.close()
-        
-        # 读取临时图片
-        img = Image.open(temp_buffer)
-            
-        # 添加手写效果
-        if randomness > 0:
-            img = self._add_handwriting_effect(img, randomness, text_color)
-        
-        # 保存最终图片
-        img.save(output_file, format=format)
-        
-        return output_file
+        return output_files if len(output_files) > 1 else output_files[0]
     
     def _render_with_random_fonts(self, text, resolution, a4, figsize, bg_color, text_color, randomness):
         """
@@ -313,6 +265,391 @@ class LatexToHandwritten:
         
         return new_img
     
+    def _split_text_formulas(self, content):
+        """
+        将内容分割为正文和公式部分
+        
+        参数:
+            content: str - 包含文本和公式的内容
+        
+        返回:
+            list - 包含文本和公式的列表，每个元素是一个字典，包含type和content字段
+        """
+        # 定义公式正则表达式
+        patterns = [
+            # 块级公式 $$...$$
+            (r'\$\$(.*?)\$\$', 'formula'),
+            # LaTeX环境公式 \[...\]
+            (r'\\\[(.*?)\\\]', 'formula'),
+            # 行内公式 $...$
+            (r'\$(.*?)\$', 'formula'),
+        ]
+        
+        result = []
+        last_end = 0
+        
+        # 遍历所有公式模式
+        for pattern, type_ in patterns:
+            matches = re.finditer(pattern, content, re.DOTALL)
+            for match in matches:
+                start, end = match.span()
+                
+                # 添加匹配前的文本
+                if start > last_end:
+                    text = content[last_end:start]
+                    if text.strip():
+                        result.append({'type': 'text', 'content': text})
+                
+                # 添加公式
+                formula_content = match.group(1)
+                result.append({'type': type_, 'content': formula_content})
+                
+                last_end = end
+        
+        # 添加剩余的文本
+        if last_end < len(content):
+            text = content[last_end:]
+            if text.strip():
+                result.append({'type': 'text', 'content': text})
+        
+        return result
+    
+    def _auto_wrap_text(self, text, max_chars=50):
+        """
+        自动换行处理，支持中英文混合文本
+        
+        参数:
+            text: str - 要处理的文本
+            max_chars: int - 每行最大字符数
+        
+        返回:
+            list - 换行后的文本列表
+        """
+        lines = []
+        current_line = []
+        char_count = 0
+        
+        # 遍历文本中的每个字符
+        for char in text:
+            # 检查是否为换行符
+            if char in ['\n', '\r']:
+                # 添加当前行
+                if current_line:
+                    lines.append(''.join(current_line))
+                    current_line = []
+                    char_count = 0
+                continue
+            
+            # 检查是否需要换行
+            if char_count >= max_chars:
+                # 添加当前行
+                lines.append(''.join(current_line))
+                current_line = []
+                char_count = 0
+            
+            # 添加字符到当前行
+            current_line.append(char)
+            
+            # 更新字符计数（中文字符计为1，英文字符计为0.5）
+            if '\u4e00' <= char <= '\u9fff':
+                # 中文字符
+                char_count += 1
+            else:
+                # 英文字符
+                char_count += 0.5
+        
+        # 添加最后一行
+        if current_line:
+            lines.append(''.join(current_line))
+        
+        return lines
+    
+    def _paginate_content(self, content_items, max_score=15):
+        """
+        根据内容分数自动分页
+        
+        参数:
+            content_items: list - 包含文本和公式的列表
+            max_score: int - 每页最大分数（普通行1分，公式行2分）
+        
+        返回:
+            list - 分页后的内容列表，每个元素是一页的内容
+        """
+        pages = []
+        current_page = []
+        current_score = 0
+        
+        for item in content_items:
+            if item['type'] == 'text':
+                # 文本内容，需要换行处理
+                wrapped_text = self._auto_wrap_text(item['content'])
+                for line in wrapped_text:
+                    line_score = 1  # 普通行1分
+                    
+                    # 检查是否超过当前页最大分数
+                    if current_score + line_score > max_score:
+                        # 开始新页
+                        pages.append(current_page)
+                        current_page = [{'type': 'text', 'content': line}]
+                        current_score = line_score
+                    else:
+                        # 添加到当前页
+                        current_page.append({'type': 'text', 'content': line})
+                        current_score += line_score
+            elif item['type'] == 'formula':
+                # 公式内容，2分
+                formula_score = 2
+                
+                # 检查是否超过当前页最大分数
+                if current_score + formula_score > max_score:
+                    # 开始新页
+                    pages.append(current_page)
+                    current_page = [{'type': 'formula', 'content': item['content']}]
+                    current_score = formula_score
+                else:
+                    # 添加到当前页
+                    current_page.append({'type': 'formula', 'content': item['content']})
+                    current_score += formula_score
+        
+        # 添加最后一页
+        if current_page:
+            pages.append(current_page)
+        
+        return pages
+    
+    def _render_mixed_content(self, content_items, figsize, resolution, bg_color, text_color, randomness):
+        """
+        混合渲染：正文随机字体，公式传统渲染
+        
+        参数:
+            content_items: list - 包含文本和公式的列表
+            figsize: tuple - 图片尺寸（英寸）
+            resolution: int - 图片分辨率（DPI）
+            bg_color: str - 背景颜色
+            text_color: str - 文字颜色
+            randomness: float - 随机效果强度
+        
+        返回:
+            PIL.Image - 渲染后的图片
+        """
+        # 转换英寸为像素
+        width_px = int(figsize[0] * resolution)
+        height_px = int(figsize[1] * resolution)
+        
+        # 创建空白图片
+        img = Image.new('RGB', (width_px, height_px), bg_color)
+        draw = ImageDraw.Draw(img)
+        
+        # 基本字体大小
+        base_font_size = 48
+        
+        # 初始位置
+        margin = int(width_px * 0.1)  # 10%边距
+        x = margin
+        y = margin + base_font_size
+        line_height = int(base_font_size * 1.5)
+        
+        # 加载所有可用字体
+        available_fonts = self.all_ttf_fonts
+        
+        # 系统黑体字体路径（用于中文）
+        simhei_path = "C:/Windows/Fonts/simhei.ttf"
+        
+        # 处理每个内容项
+        for item in content_items:
+            if item['type'] == 'text':
+                # 文本内容，每个字符随机字体
+                for char in item['content']:
+                    if char.isspace():
+                        # 空格处理
+                        x += int(base_font_size * 0.4)
+                        continue
+                    
+                    try:
+                        # 根据字符类型选择字体
+                        if '\u4e00' <= char <= '\u9fff':
+                            # 中文字符，使用系统黑体
+                            if os.path.exists(simhei_path):
+                                random_font_path = simhei_path
+                            else:
+                                # 如果没有找到黑体，随机选择一个字体
+                                random_font_path = random.choice(available_fonts) if available_fonts else None
+                        else:
+                            # 英文字符，随机选择字体
+                            random_font_path = random.choice(available_fonts) if available_fonts else None
+                        
+                        if random_font_path:
+                            # 随机调整字体大小（±10%）
+                            random_size = int(base_font_size * (0.9 + random.random() * 0.2))
+                            
+                            # 加载字体
+                            pil_font = ImageFont.truetype(random_font_path, random_size)
+                            
+                            # 随机位置偏移
+                            offset_x = int(random.uniform(-randomness*8, randomness*8))
+                            offset_y = int(random.uniform(-randomness*8, randomness*8))
+                            
+                            # 绘制字符
+                            draw.text((x + offset_x, y + offset_y), char, font=pil_font, fill=text_color)
+                            
+                            # 更新x坐标
+                            char_width = pil_font.getbbox(char)[2] - pil_font.getbbox(char)[0]
+                            x += char_width
+                        else:
+                            # 使用默认字体
+                            draw.text((x, y), char, fill=text_color)
+                            x += base_font_size * 0.6
+                        
+                        # 换行检查
+                        if x > width_px - margin:
+                            x = margin
+                            y += line_height
+                    except Exception as e:
+                        # 如果字体加载失败，使用默认字体
+                        draw.text((x, y), char, fill=text_color)
+                        x += base_font_size * 0.6
+                
+                # 换行
+                x = margin
+                y += line_height
+            elif item['type'] == 'formula':
+                # 公式内容，使用传统渲染
+                formula = item['content']
+                
+                # 创建临时图来渲染LaTeX公式
+                temp_fig, temp_ax = plt.subplots(figsize=(8, 2), dpi=resolution)
+                
+                # 设置背景为透明
+                temp_fig.patch.set_alpha(0)
+                temp_ax.set_alpha(0)
+                temp_ax.set_facecolor('none')
+                
+                # 渲染公式
+                temp_ax.text(0.5, 0.5, f"${formula}$", fontsize=base_font_size, 
+                            ha='center', va='center', color=text_color, 
+                            transform=temp_ax.transAxes)
+                
+                # 隐藏坐标轴
+                temp_ax.axis('off')
+                
+                # 保存临时图片到内存
+                temp_buffer = BytesIO()
+                temp_fig.savefig(temp_buffer, dpi=resolution, format='png', 
+                                bbox_inches='tight', pad_inches=0.1, transparent=True)
+                temp_buffer.seek(0)
+                plt.close(temp_fig)
+                
+                # 读取临时图片
+                formula_img = Image.open(temp_buffer)
+                
+                # 调整公式图片大小
+                formula_width, formula_height = formula_img.size
+                scale_factor = 0.8
+                new_formula_width = int(formula_width * scale_factor)
+                new_formula_height = int(formula_height * scale_factor)
+                formula_img = formula_img.resize((new_formula_width, new_formula_height), Image.LANCZOS)
+                
+                # 计算公式位置
+                formula_x = x
+                formula_y = y - int(new_formula_height * 0.3)
+                
+                # 粘贴公式到主图片
+                img.paste(formula_img, (formula_x, formula_y), formula_img)
+                
+                # 更新x坐标
+                x += new_formula_width + int(base_font_size * 0.2)
+                
+                # 换行检查
+                if x > width_px - margin:
+                    x = margin
+                    y += line_height
+            
+            # 检查是否超出页面高度
+            if y > height_px - margin:
+                break
+        
+        return img
+    
+    def _render_page(self, content_items, figsize, resolution, bg_color, text_color, randomness, mixed_rendering=False, random_fonts=False):
+        """
+        单页渲染，选择合适的渲染路径
+        
+        参数:
+            content_items: list - 包含文本和公式的列表
+            figsize: tuple - 图片尺寸（英寸）
+            resolution: int - 图片分辨率（DPI）
+            bg_color: str - 背景颜色
+            text_color: str - 文字颜色
+            randomness: float - 随机效果强度
+            mixed_rendering: bool - 是否使用混合渲染
+            random_fonts: bool - 是否每个字符随机使用不同字体
+        
+        返回:
+            PIL.Image - 渲染后的图片
+        """
+        if mixed_rendering:
+            # 使用混合渲染
+            img = self._render_mixed_content(content_items, figsize, resolution, bg_color, text_color, randomness)
+        elif random_fonts and self.all_ttf_fonts:
+            # 使用随机字体渲染
+            # 合并所有内容为纯文本
+            pure_text = ''
+            for item in content_items:
+                if item['type'] == 'text':
+                    pure_text += item['content'] + '\n'
+                elif item['type'] == 'formula':
+                    pure_text += f"${item['content']}$\n"
+            
+            # 使用随机字体渲染
+            img = self._render_with_random_fonts(pure_text, resolution, False, figsize, bg_color, text_color, randomness)
+        else:
+            # 使用传统渲染
+            # 创建一个临时图来渲染LaTeX
+            fig, ax = plt.subplots(figsize=figsize, dpi=resolution)
+            
+            # 设置背景颜色
+            fig.patch.set_facecolor(bg_color)
+            ax.set_facecolor(bg_color)
+            
+            # 合并所有内容，使用$包裹公式
+            pure_text = ''
+            for item in content_items:
+                if item['type'] == 'text':
+                    pure_text += item['content'] + '\n'
+                elif item['type'] == 'formula':
+                    pure_text += f"${item['content']}$\n"
+            
+            # 设置matplotlib使用mathtext渲染公式
+            plt.rcParams['text.usetex'] = False
+            plt.rcParams['mathtext.fontset'] = 'stix'
+            plt.rcParams['font.family'] = ['sans-serif']
+            plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']
+            
+            # 渲染LaTeX
+            ax.text(0.5, 0.5, pure_text, fontsize=48, ha='center', va='center',
+                    color=text_color, transform=ax.transAxes, linespacing=1.8)
+            
+            # 隐藏坐标轴
+            ax.axis('off')
+            
+            # 调整边距
+            plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+            
+            # 保存临时图片到内存
+            temp_buffer = BytesIO()
+            plt.savefig(temp_buffer, dpi=resolution, format='png', bbox_inches='tight', pad_inches=0.1, transparent=(bg_color == 'transparent'))
+            temp_buffer.seek(0)
+            plt.close()
+            
+            # 读取临时图片
+            img = Image.open(temp_buffer)
+        
+        # 添加手写效果
+        if randomness > 0:
+            img = self._add_handwriting_effect(img, randomness, text_color)
+        
+        return img
+    
     def _apply_handwritten_font(self, img, latex, font_path, text_color, bg_color):
         """尝试使用指定的手写字体重新渲染公式"""
         # 注意：直接使用PIL渲染复杂LaTeX公式比较困难
@@ -348,11 +685,12 @@ _converter = LatexToHandwritten()
 def convert_latex(latex, output_file="output.png", font="IndieFlower-Regular", 
                  resolution=200, width=800, height=200, randomness=0.05,
                  bg_color="white", text_color="black", format="png", a4=False,
-                 markdown=False, random_fonts=False):
+                 markdown=False, random_fonts=False, mixed_rendering=False, max_chars=50, max_score=15):
     """便捷函数：将LaTeX公式转换为手写风格图片"""
     return _converter.convert_latex(latex, output_file, font, resolution, 
                                   width, height, randomness, bg_color, 
-                                  text_color, format, a4, markdown, random_fonts)
+                                  text_color, format, a4, markdown, random_fonts, 
+                                  mixed_rendering, max_chars, max_score)
 
 def get_available_fonts():
     """获取可用的手写字体列表"""

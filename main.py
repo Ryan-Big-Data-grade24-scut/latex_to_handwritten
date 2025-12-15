@@ -18,7 +18,8 @@ import os
 @click.option('--input-file', '-i', type=click.File('r', encoding='utf-8'), help='从文件读取多行LaTeX内容')
 @click.option('--markdown', '-m', is_flag=True, help='将内容作为markdown处理')
 @click.option('--random-fonts', '-rf', is_flag=True, help='每个字符随机使用不同字体')
-def main(latex, output, font, resolution, width, height, randomness, bg_color, text_color, format, list_fonts, a4, input_file, markdown, random_fonts):
+@click.option('--mixed-rendering', '-mr', is_flag=True, help='使用混合渲染（正文随机字体，公式传统渲染）')
+def main(latex, output, font, resolution, width, height, randomness, bg_color, text_color, format, list_fonts, a4, input_file, markdown, random_fonts, mixed_rendering):
     """
     将LaTeX公式转换为手写风格图片
     
@@ -70,7 +71,8 @@ def main(latex, output, font, resolution, width, height, randomness, bg_color, t
             format=format,
             a4=a4,
             markdown=markdown,
-            random_fonts=random_fonts
+            random_fonts=random_fonts,
+            mixed_rendering=mixed_rendering
         )
         
         click.echo(f"成功生成手写公式图片：{output_file}")
