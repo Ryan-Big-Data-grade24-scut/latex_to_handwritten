@@ -18,17 +18,19 @@ import os
 @click.option('--input-file', '-i', type=click.File('r', encoding='utf-8'), help='从文件读取多行LaTeX内容')
 @click.option('--markdown', '-m', is_flag=True, help='将内容作为markdown处理')
 @click.option('--random-fonts', '-rf', is_flag=True, help='每个字符随机使用不同字体')
-def main(latex, output, font, resolution, width, height, randomness, bg_color, text_color, format, list_fonts, a4, input_file, markdown, random_fonts):
+@click.option('--mixed-rendering', '-mr', is_flag=True, help='混合渲染：正文随机字体，公式传统渲染')
+def main(latex, output, font, resolution, width, height, randomness, bg_color, text_color, format, list_fonts, a4, input_file, markdown, random_fonts, mixed_rendering):
     """
     将LaTeX公式转换为手写风格图片
     
-    LATEX: LaTeX公式字符串，例如：$E=mc^2$，支持使用\\n分隔多行
+    LATEX: LaTeX公式字符串，例如：$E=mc^2$，支持使用\n分隔多行
     
     示例：
     单公式：python main.py "$E=mc^2$"
-    多行公式：python main.py "$E=mc^2$\\n$F=ma$"
+    多行公式：python main.py "$E=mc^2$\n$F=ma$"
     从文件读取：python main.py -i formulas.txt --a4
     随机字体：python main.py "Hello World" --random-fonts
+    混合渲染：python main.py "Text $E=mc^2$ formula" --mixed-rendering
     Markdown：python main.py -i document.md --markdown --a4
     """
     # 如果请求列出字体
@@ -53,13 +55,19 @@ def main(latex, output, font, resolution, width, height, randomness, bg_color, t
         click.echo("错误：没有提供LaTeX内容，请使用参数或文件输入")
         return
     
-    output = os.path.join("examples", output)
+    # 确保examples目录存在
+    examples_dir = "examples"
+    if not os.path.exists(examples_dir):
+        os.makedirs(examples_dir)
+    
+    # 构建完整的输出路径
+    output_path = os.path.join(examples_dir, output)
     
     try:
         # 调用转换函数
         output_file = convert_latex(
             latex=latex,
-            output_file=output,
+            output_file=output_path,
             font=font,
             resolution=resolution,
             width=width,
@@ -70,10 +78,12 @@ def main(latex, output, font, resolution, width, height, randomness, bg_color, t
             format=format,
             a4=a4,
             markdown=markdown,
-            random_fonts=random_fonts
+            random_fonts=random_fonts,
+            mixed_rendering=mixed_rendering
         )
         
         click.echo(f"成功生成手写公式图片：{output_file}")
+        click.echo(f"图片保存路径：{os.path.abspath(output_file)}")
     except Exception as e:
         click.echo(f"错误：{e}")
 

@@ -1,0 +1,284 @@
+# Chapter 37 Relativity
+## Problem 6
+From the value of $\Delta t$ in the graph when $\beta=0$, we infer than $\Delta t_{0}$ in Eq. 37-9 is 8.0 s. Thus, that equation (which describes the curve in Fig. 37-22) becomes
+$\Delta t=\frac{\Delta t_{0}}{\sqrt{1-(v / c)^{2}}}=\frac{8.0 s}{\sqrt{1-\beta^{2}}}$
+If we set $\beta=0.98$ in this expression, we obtain approximately 40 s for $\Delta t$
+
+## Problem 14
+From the value of $L$ in the graph when $\beta=0$, we infer that $L_{0}$ in Eq. 37-13 is 0.80 m. Thus, that equation (which describes the curve in Fig. 37-23) with SI units understood becomes
+$L=L_{0} \sqrt{1-(v / c)^{2}}=(0.80 m) \sqrt{1-\beta^{2}}$
+If we set $\beta=0.95$ in this expression, we obtain approximately 0.25 m for $L$
+
+## Problem 19
+(a) We take the flashbulbs to be at rest in frame $S$, and let frame $S'$ be the rest frame of the second observer. Clocks in neither frame measure the proper time interval between the flashes, so the full Lorentz transformation must be used. Let $t_{s}$ be the time and $x_{s}$ be the coordinate of the small flash, as measured in frame $S$. Then, the time of the small flash, as measured in frame $S'$, is
+$t_{s}'=\gamma\left(t_{s}-\frac{\beta x_{s}}{c}\right)$
+where $\beta=v / c=0.250$ and
+$\gamma=1 / \sqrt{1-\beta^{2}}=1 / \sqrt{1-(0.250)^{2}}=1.0328$
+Similarly, let $t_{b}$ be the time and $x_{b}$ be the coordinate of the big flash, as measured in frame $S$. Then, the time of the big flash, as measured in frame $S'$, is
+$t_{b}'=\gamma\left(t_{b}-\frac{\beta x_{b}}{c}\right)$
+Subtracting the second Lorentz transformation equation from the first and recognizing that $t_{s}=t_{b}$ (since the flashes are simultaneous in $S$), we find
+$\Delta t'=\frac{\gamma \beta\left(x_{s}-x_{b}\right)}{c}=\frac{(1.0328)(0.250)\left(30 × 10^{3} m\right)}{3.00 × 10^{8} m / s}=2.58 × 10^{-5} s$
+where $\Delta t'=t_{b}'-t_{s}'$
+(b) Since $\Delta t'$ is negative, $t_{b}'$ is greater than $t_{s}'$. The small flash occurs first in $S'$
+
+## Problem 22
+(a) From Eq. 2' of Table 37-2, we have
+$\Delta t=v \gamma \Delta x' / c^{2}+\gamma \Delta t'$
+The coefficient of $\Delta x'$ is the slope (4.0 µs/400 m) of the graph, and the last term involving $\Delta t'$ is the "y-intercept" of the graph. From the first observation, we can solve for $\beta=v / c=0.949$ and consequently $\gamma=3.16$. Then, from the second observation, we find
+$\Delta t'=\frac{\Delta t}{\gamma}=\frac{2.00 × 10^{-6} s}{3.16}=6.3 × 10^{-7} s$
+
+## Problem 25
+(a) In frame $S$, our coordinates are such that $x_{1}=+1200 m$ for the big flash, and $x_{2}=1200-720=480 m$ for the small flash (which occurred later). Thus,
+$\Delta x=x_{2}-x_{1}=-720 m$
+If we set $\Delta x'=0$ in Eq. 37-25,we find
+$0=\gamma(\Delta x-v \Delta t)=\gamma[-720 m-v\left(5.00 × 10^{-6} s\right)]$
+which yields $v=-1.44 ×10^{8} m / s$ or $\beta=v / c=0.480$
+(b) The negative sign in part (a) implies that frame $S'$ must be moving in the $-x$ direction
+(c) Equation 37-28 leads to
+$\Delta t'=\gamma\left(\Delta t-\frac{v \Delta x}{c^{2}}\right)=\gamma\left(5.00 × 10^{-6} s-\frac{\left(-1.44 × 10^{8} m / s\right)(-720 m)}{\left(2.998 × 10^{8} m / s\right)^{2}}\right)$
+which turns out to be positive (regardless of the specific value of $\gamma$). Thus, the order of the flashes is the same in the $S'$ frame as it is in the $S$ frame (where $\Delta t$ is also positive). Thus, the big flash occurs first, and the small flash occurs later
+(d) Finishing the computation begun in part (c), we obtain
+$\Delta t'=\frac{5.00 × 10^{-6} s-\left(-1.44 × 10^{8} m / s\right)(-720 m) /\left(2.998 × 10^{8} m / s\right)^{2}}{\sqrt{1-0.480^{2}}}=4.39 × 10^{-6} s$
+
+## Problem 45
+The distance traveled by the pion in the frame of Earth is (using Eq. 37-12) $d=v \Delta t$. The proper lifetime $\Delta t_{0}$ is related to $\Delta t$ by the time-dilation formula: $\Delta t=\gamma \Delta t_{0}$. To use this equation, we must first find the Lorentz factor $\gamma$ (using Eq. 37-48). Since the total energy of the pion is given by $E=1.35 ×10^{5} MeV$ and its $m c^{2}$ value is 139.6 MeV, then
+$\gamma=\frac{E}{m c^{2}}=\frac{1.35 × 10^{5} MeV}{139.6 MeV}=967.05$
+Therefore, the lifetime of the moving pion as measured by Earth observers is
+$\Delta t=\gamma \Delta t_{0}=967.1\left(35.0 × 10^{-9} s\right)=3.385 × 10^{-5} s$
+and the distance it travels is
+$d \approx c \Delta t=\left[2.998 × 10^{8} m / s\right]\left[3.385 × 10^{-5} s\right]=1.015 × 10^{4} m=10.15 km$
+where we have approximated its speed as $c$ (note: its speed can be found by solving Eq. 37-8, which gives $v=0.9999995 c$; this more precise value for $v$ would not significantly alter our final result). Thus, the altitude at which the pion decays is 120 km – 10.15 km = 110 km
+
+## Problem 46
+(a) Squaring Eq. 37-47 gives
+$E^{2}=\left[m c^{2}\right]^{2}+2 m c^{2} K+K^{2}$
+which we set equal to Eq. 37-55. Thus,
+$\left(m c^{2}\right)^{2}+2 m c^{2} K+K^{2}=(p c)^{2}+\left(m c^{2}\right)^{2} \Rightarrow m=\frac{(p c)^{2}-K^{2}}{2 K c^{2}}$
+(b) At low speeds, the pre-Einsteinian expressions $p=m v$ and $K=\frac{1}{2} m v^{2}$ apply. We note that $p c \gg K$ at low speeds since $c \gg v$ in this regime. Thus,
+$m \to \frac{(m v c)^{2}-\left(\frac{1}{2} m v^{2}\right)^{2}}{2\left(\frac{1}{2} m v^{2}\right) c^{2}} \approx \frac{(m v c)^{2}}{2\left(\frac{1}{2} m v^{2}\right) c^{2}}=m$
+(c) Here, $p c=121 MeV$, so
+$m=\frac{121^{2}-55^{2}}{2×55 c^{2}}=105.6 MeV / c^{2}$
+Now, the mass of the electron (see Table 37-3) is $m_{e}=0.511 MeV / c^{2}$, so our result is roughly 207 times bigger than an electron mass, i.e., $m / m_{e} ≈207$. The particle is a muon
+
+## Problem 51
+The speed $v$ of the electron satisfies
+$K_{max }=\frac{1}{2} m_{e} v^{2}=\frac{1}{2}\left(m_{e} c^{2}\right)(v / c)^{2}=E_{photon }-\Phi$
+Using Table 37-3, we find
+$v=c \sqrt{\frac{2\left(E_{photon }-\Phi\right)}{m_{e} c^{2}}}=\left(2.998 × 10^{8} m / s\right) \sqrt{\frac{2(5.80 eV-4.50 eV)}{511 × 10^{3} eV}}=6.76 × 10^{5} m / s$
+
+# Chapter 38 Photons and Matter Waves
+## Problem 9
+(a) We assume all the power results in photon production at the wavelength $\lambda=589 nm$. Let $R$ be the rate of photon production and $E$ be the energy of a single photon. Then,
+$P=R E=R h c / \lambda$
+where $E=h f$ and $f=c / \lambda$ are used. Here $h$ is the Planck constant, $f$ is the frequency of the emitted light, and $\lambda$ is its wavelength. Thus,
+$R=\frac{\lambda P}{h c}=\frac{\left(589 × 10^{-9} m\right)(100 W)}{\left(6.63 × 10^{-34} J \cdot s\right)\left(3.00 × 10^{8} m / s\right)}=2.96 × 10^{20} photon / s$
+(b) Let $I$ be the photon flux a distance $r$ from the source. Since photons are emitted uniformly in all directions, $R=4 \pi r^{2} I$ and
+$r=\sqrt{\frac{R}{4 \pi I}}=\sqrt{\frac{2.96 × 10^{20} photon / s}{4 \pi\left(1.00 × 10^{4} photon / m^{2} \cdot s\right)}}=4.86 × 10^{7} m$
+(c) The photon flux is
+$I=\frac{R}{4 \pi r^{2}}=\frac{2.96 × 10^{20} photon / s}{4 \pi(2.00 m)^{2}}=5.89 × 10^{18} \frac{photon}{m^{2} \cdot s}$
+
+## Problem 24
+(a) We use the value $h c=1240 ~nm \cdot eV$:
+$E_{photon }=\frac{h c}{\lambda}=\frac{1240 nm \cdot eV}{1.00 nm}=1.24 keV$
+(b) For the electron, we have
+$K=\frac{p^{2}}{2 m_{e}}=\frac{(h / \lambda)^{2}}{2 m_{e}}=\frac{(h c / \lambda)^{2}}{2 m_{e} c^{2}}=\frac{1}{2(0.511 MeV)}\left(\frac{1240 eV \cdot nm}{1.00 nm}\right)^{2}=1.50 eV$
+(c) In this case, we find
+$E_{photon }=\frac{1240 nm \cdot eV}{1.00 × 10^{-6} nm}=1.24 × 10^{9} eV=1.24 GeV$
+(d) For the electron (recognizing that $1240 eV \cdot nm=1240 MeV \cdot fm$)
+$K=\sqrt{p^{2} c^{2}+\left(m_{e} c^{2}\right)^{2}}-m_{e} c^{2}=\sqrt{\left(h c / \lambda\right)^{2}+\left(m_{e} c^{2}\right)^{2}}-m_{e} c^{2}$
+$=\sqrt{\left(\frac{1240 MeV \cdot fm}{1.00 fm}\right)^{2}+\left(0.511 MeV\right)^{2}}-0.511 MeV$
+$=1.24 × 10^{3} MeV=1.24 GeV$
+We note that at short $\lambda$ (large $K$) the kinetic energy of the electron, calculated with the relativistic formula, is about the same as that of the photon. This is expected since now $K≈E≈p c$ for the electron, which is the same as $E=p c$ for the photon
+
+## Problem 29
+(a) Since both spaceships A and C are approaching B at the same speed (relative to B), with $v_{A}>v_{B}>v_{C}$, using relativistic velocity addition formula, we have $v_{A}'=-v_{c}'$,or
+$\frac{v_{A}-v_{B}}{1-v_{A} v_{B} / c^{2}}=\frac{v_{B}-v_{C}}{1-v_{B} v_{C} / c^{2}} \Rightarrow \frac{\beta_{A}-\beta_{B}}{1-\beta_{A} \beta_{B}}=\frac{\beta_{B}-\beta_{C}}{1-\beta_{B} \beta_{C}}$
+We multiply both sides by factors to get rid of the denominators:
+$\left(\beta_{A}-\beta_{B}\right)\left(1-\beta_{B} \beta_{C}\right)=\left(\beta_{B}-\beta_{C}\right)\left(1-\beta_{A} \beta_{B}\right)$
+Expanding and simplifying gives
+$\left(\beta_{A}+\beta_{C}\right) \beta_{B}^{2}-2\left(1+\beta_{A} \beta_{C}\right) \beta_{B}+\left(\beta_{A}+\beta_{C}\right)=0$
+Solving the quadratic equation with $\beta_{A}=0.90$ and $\beta_{C}=0.80$ leads to $\beta_{B}=0.858$ or $v_{B}=0.858 c$
+(b) The relative speed (say, A relative to B) is
+$v_{A}'=\frac{v_{A}-v_{B}}{1-v_{A} v_{B} / c^{2}}=\frac{0.90 c-0.858 c}{1-(0.90)(0.858)}=0.185 c$
+
+## Problem 37
+(a) When a photon scatters off from an electron initially at rest, the change in wavelength is given by
+$\Delta \lambda=(h / m c)(1-cos \phi)$
+where $m$ is the mass of an electron and $\phi$ is the scattering angle
+(b) The Compton wavelength of the electron is $h / m c=2.43 ×10^{-12} m=2.43$ pm. Therefore, we find the shift to be
+$\Delta \lambda=(h / m c)(1-cos \phi)=(2.43 pm)\left(1-cos 30^{\circ}\right)=0.326 pm$
+The final wavelength is
+$\lambda'=\lambda+\Delta \lambda=2.4 pm+0.326 pm=2.73 pm$
+(c) With $\phi=120^{\circ}$, $\Delta \lambda = (2.43 pm)(1 – cos 120°) = 3.645 pm$ and
+$\lambda'=2.4 pm+3.645 pm=6.05 pm$
+
+## Problem 58
+(a) The x-ray frequency is
+$f=\frac{c}{\lambda}=\frac{2.998 × 10^{8} m / s}{35.0 × 10^{-12} m}=8.57 × 10^{18} Hz$
+(b) The x-ray photon energy is
+$E=h f=\left(4.14 × 10^{-15} eV \cdot s\right)\left(8.57 × 10^{18} Hz\right)=3.55 × 10^{4} eV$
+(c) From Eq. 38-7,
+$p=\frac{h}{\lambda}=\frac{6.63 × 10^{-34} J \cdot s}{35.0 × 10^{-12} m}=1.89 × 10^{-23} kg \cdot m / s=35.4 keV / c$
+
+## Problem 61
+For $U=U_{0}$, Schrödinger’s equation becomes
+$\frac{d^{2} \psi}{d x^{2}}+\frac{8 \pi^{2} m}{h^{2}}\left[E-U_{0}\right] \psi=0$
+We substitute $\psi=\psi_{0} e^{i k x}$
+The second derivative is $\frac{d^{2} \psi}{d x^{2}}=-k^{2} \psi_{0} e^{i k x}=-k^{2} \psi$. The result is
+$-k^{2} \psi+\frac{8 \pi^{2} m}{h^{2}}\left[E-U_{0}\right] \psi=0$
+Solving for $k$, we obtain
+$k=\sqrt{\frac{8 \pi^{2} m}{h^{2}}\left[E-U_{0}\right]}=\frac{2 \pi}{h} \sqrt{2 m\left[E-U_{0}\right]}$
+
+## Problem 63
+(a) Using Euler’s formula $e^{i \phi}=cos \phi+i sin \phi$ we rewrite $\psi(x)$ as
+$\psi(x)=\psi_{0} e^{i k x}=\psi_{0}(cos k x+i sin k x)=\left(\psi_{0} cos k x\right)+i\left(\psi_{0} sin k x\right)=a+i b$
+where $a=\psi_{0} cos k x$ and $b=\psi_{0} sin k x$ are both real quantities
+(b) The time-dependent wave function is
+$\psi(x, t) = \psi(x) e^{-i \omega t}=\psi_{0} e^{i k x} e^{-i \omega t}=\psi_{0} e^{i(k x-\omega t)}$
+$=\left[\psi_{0} cos (k x-\omega t)\right]+i\left[\psi_{0} sin (k x-\omega t)\right]$
+
+## Problem 66
+(a) The wave function is now given by
+$\Psi(x, t)=\psi_{0} e^{i(k x-\omega t)}+e^{-i(k x+\omega t)}=\psi_{0} e^{-i \omega t}\left(e^{i k x}+e^{-i k x}\right)$
+Thus,
+$|\Psi(x, t)|^{2} = \left|\psi_{0} e^{-i \omega t}\left(e^{i k x}+e^{-i k x}\right)\right|^{2}=\left|\psi_{0} e^{-i \omega t}\right|^{2}\left|e^{i k x}+e^{-i k x}\right|^{2}=\psi_{0}^{2}\left|e^{i k x}+e^{-i k x}\right|^{2}$
+$=\psi_{0}^{2}|(cos k x+i sin k x)+(cos k x-i sin k x)|^{2}=4 \psi_{0}^{2}(cos k x)^{2}$
+$=2 \psi_{0}^{2}(1+cos 2 k x)$
+(b) Consider two plane matter waves, each with the same amplitude $\psi_{0} / \sqrt{2}$ and traveling in opposite directions along the $x$ axis. The combined wave $\Psi$ is a standing wave:
+$\Psi(x, t)=\psi_{0} e^{i(k x-\omega t)}+\psi_{0} e^{-i(k x+\omega t)}=\psi_{0}\left(e^{i k x}+e^{-i k x}\right) e^{-i \omega t}=\left(2 \psi_{0} cos k x\right) e^{-i \omega t}$
+Thus, the squared amplitude of the matter wave is
+$|\Psi(x, t)|^{2}=\left(2 \psi_{0} cos k x\right)^{2}\left|e^{-i \omega t}\right|^{2}=2 \psi_{0}^{2}(1+cos 2 k x)$
+(c) We set $|\Psi(x, t)|^{2}=2 \psi_{0}^{2}(1+cos 2 k x)=0$ to obtain $cos (2 k x)=-1$. This gives
+$2 k x=2\left(\frac{2 \pi}{\lambda}\right)=(2 n+1) \pi, (n=0,1,2,3,...)$
+We solve for $x$:
+$x=\frac{1}{4}(2 n+1) \lambda$
+(d) The most probable positions for finding the particle are where $|\Psi(x, t)| \propto(1+cos 2 k x)$ reaches its maximum. Thus $cos 2 k x=1$,or
+$2 k x=2\left(\frac{2 \pi}{\lambda}\right)=2 n \pi, (n=0,1,2,3, ...)$
+We solve for $x$ and find $x=\frac{1}{2} n \lambda$
+
+# Chapter 39 More about Matter Waves
+## Problem 11
+Let the quantum numbers of the pair in question be $n$ and $n+1$, respectively. We note that
+$E_{n+1}-E_{n}=\frac{(n+1)^{2} h^{2}}{8 m L^{2}}-\frac{n^{2} h^{2}}{8 m L^{2}}=\frac{(2 n+1) h^{2}}{8 m L^{2}}$
+Therefore, $E_{n+1}-E_{n}=(2 n+1) E_{1}$. Now
+$E_{n+1}-E_{n}=E_{6}=6^{2} E_{1}=36 E_{1}=(2 n+1) E_{1}$
+which gives $2 n+1=36$,or $n=17.5$. This is not an integer, so it is impossible to find the pair that fits the requirement
+
+## Problem 12
+The energy levels are given by $E_{n}=n^{2} h^{2} / 8 m L^{2}$, where $h$ is the Planck constant, $m$ is the mass of an electron, and $L$ is the width of the well. The frequency of the light that will excite the electron from the state with quantum number $n_{i}$ to the state with quantum number $n_{f}$ is
+$f=\frac{\Delta E}{h}=\frac{h}{8 m L^{2}}\left(n_{f}^{2}-n_{i}^{2}\right)$
+and the wavelength of the light is
+$\lambda=\frac{c}{f}=\frac{8 m L^{2} c}{h\left(n_{f}^{2}-n_{i}^{2}\right)}$
+We evaluate this expression for $n_{i}=1$ and $n_{f}=2,3,4$, and 5, in turn. We use $h=6.626 ×10^{-34} J \cdot s$, $m=9.109 ×10^{-31} kg$,and $L=250 ×10^{-12} m$, and obtain the following results:
+(a) $6.87 ×10^{-8} m$ for $n_{f}=2$ (the longest wavelength)
+(b) $2.58 ×10^{-8} m$ for $n_{f}=3$ (the second longest wavelength)
+(c) $1.37 ×10^{-8} m$ for $n_{f}=4$ (the third longest wavelength)
+
+## Problem 16
+(a) The probability of detecting the particle in the region $0 ≤x ≤L / 4$ is
+$\left(\frac{2}{L}\right)\left(\frac{L}{\pi}\right) \int_{0}^{\pi / 4} sin ^{2} y d y=\left.\frac{2}{\pi}\left(\frac{y}{2}-\frac{sin 2 y}{4}\right)\right|_{0} ^{\pi / 4}=0.091$
+(b) As expected from symmetry,
+$\left(\frac{2}{L}\right)\left(\frac{L}{\pi}\right) \int_{\pi / 4}^{\pi} sin ^{2} y d y=\left.\frac{2}{\pi}\left(\frac{y}{2}-\frac{sin 2 y}{4}\right)\right|_{\pi / 4} ^{\pi}=0.091$
+(c) For the region $L / 4 ≤x ≤3 L / 4$, we obtain
+$\left(\frac{2}{L}\right)\left(\frac{L}{\pi}\right) \int_{\pi / 4}^{3 \pi / 4} sin ^{2} y d y=\left.\frac{2}{\pi}\left(\frac{y}{2}-\frac{sin 2 y}{4}\right)\right|_{\pi / 4} ^{3 \pi / 4}=0.82$
+which we could also have gotten by subtracting the results of part (a) and (b) from 1; that is, $1-2(0.091)=0.82$
+
+## Problem 19
+Using $E=h c / \lambda=(1240 eV \cdot nm) / \lambda$, the energies associated with $\lambda_{a}$, $\lambda_{b}$ and $\lambda_{c}$ are
+$E_{a}=\frac{h c}{\lambda_{a}}=\frac{1240 eV \cdot nm}{14.588 nm}=85.00 eV$
+$E_{b}=\frac{h c}{\lambda_{b}}=\frac{1240 eV \cdot nm}{4.8437 nm}=256.0 eV$
+$E_{c}=\frac{h c}{\lambda_{c}}=\frac{1240 eV \cdot nm}{2.9108 nm}=426.0 eV$
+The ground-state energy is
+$E_{1}=E_{4}-E_{c}=450.0 eV-426.0 eV=24.0 eV$
+Since $E_{a}=E_{2}-E_{1}$, the energy of the first excited state is
+$E_{2}=E_{1}+E_{a}=24.0 eV+85.0 eV=109 eV$
+
+## Problem 26
+We are looking for the values of the ratio
+$\frac{E_{n x, n y}}{h^{2} / 8 m L^{2}}=L^{2}\left\{\frac{n_{x}^{2}}{L_{x}^{2}}+\frac{n_{y}^{2}}{L_{y}^{2}}\right\}=\left\{n_{x}^{2}+\frac{1}{4} n_{y}^{2}\right\}$
+and the corresponding differences
+(a) For $n_{x}=n_{y}=1$, the ratio becomes $1+\frac{1}{4}=1.25$
+(b) For $n_{x}=1$ and $n_{y}=2$, the ratio becomes $1+\frac{1}{4}×4=2.00$. One can check (by computing other $(n_{x}, n_{y})$ values) that this is the next to lowest energy in the system
+(c) The lowest set of states that are degenerate are $(n_{x}, n_{y})=(1,4)$ and $(2, 2)$. Both of these states have that ratio equal to $1+\frac{1}{4}×16=5.00$
+(d) For $n_{x}=1$ and $n_{y}=3$, the ratio becomes $1+\frac{1}{4}×9=3.25$. One can check (by computing other $(n_{x}, n_{y})$ values) that this is the lowest energy greater than that computed in part (b). The next higher energy comes from $(n_{x}, n_{y})=(2,1)$ for which the ratio is $4+\frac{1}{4}×1=4.25$. The difference between these two values is $4.25-3.25=1.00$
+
+## Problem 28
+We are looking for the values of the ratio
+$\frac{E_{n_{x}, n_{y}, n_{z}}}{h^{2} / 8 m L^{2}}=L^{2}\left[\frac{n_{x}^{2}}{L_{x}^{2}}+\frac{n_{y}^{2}}{L_{y}^{2}}+\frac{n_{z}^{2}}{L_{z}^{2}}\right]=\left[n_{x}^{2}+n_{y}^{2}+n_{z}^{2}\right]$
+and the corresponding differences
+(a) For $n_{x}=n_{y}=n_{z}=1$, the ratio becomes $1+1+1=3.00$
+(b) For $n_{x}=n_{y}=2$ and $n_{z}=1$, the ratio becomes $4+4+1=9.00$. One can check (by computing other $(n_{x}, n_{y}, n_{z})$ values) that this is the third lowest energy in the system. One can also check that this same ratio is obtained for $(n_{x}, n_{y}, n_{z})=(2,1,2)$ and $(1,2,2)$
+(c) For $n_{x}=n_{y}=1$ and $n_{z}=3$, the ratio becomes $1+1+9=11.00$. One can check (by computing other $(n_{x}, n_{y}, n_{z})$ values) that this is three “steps” up from the lowest energy in the system. One can also check that this same ratio is obtained for $(n_{x}, n_{y}, n_{z})=(1,3,1)$ and $(3, 1, 1)$. If we take the difference between this and the result of part (b), we obtain $11.0-9.00=2.00$
+(d) For $n_{x}=n_{y}=1$ and $n_{z}=2$,the ratio becomes $1+1+4=6.00$. One can check (by computing other $(n_{x}, n_{y}, n_{z})$ values) that this is the next to the lowest energy in the system. One can also check that this same ratio is obtained for $(n_{x}, n_{y}, n_{z})=(2,1,1)$ and $(1,2,1)$. Thus, three states (three arrangements of $(n_{x}, n_{y}, n_{z})$ values) have this energy
+(e) For $n_{x}=1$, $n_{y}=2$ and $n_{z}=3$,the ratio becomes $1+4+9=14.0$. One can check (by computing other $(n_{x}, n_{y}, n_{z})$ values) that this is five “steps” up from the lowest energy in the system. One can also check that this same ratio is obtained for $(n_{x}, n_{y}, n_{z})=(1,3,2)$, $(2, 3, 1)$, $(2, 1, 3)$, $(3, 1, 2)$ and $(3, 2, 1)$. Thus, six states (six arrangements of $(n_{x}, n_{y}, n_{z})$ values) have this energy
+
+## Problem 34
+(a) The product $n n^{*}$ can be rewritten as
+$n n^{*}=(a+i b)(a+i b)^{*}=(a+i b)(a-i b)=a^{2}+i b a-i a b+b^{2}=a^{2}+b^{2}$
+which is always real since both $a$ and $b$ are real
+(b) Straightforward manipulation gives
+$|n m| =|(a+i b)(c+i d)|=\left|a c+i a d+i b c+(-i)^{2} b d\right|=|(a c-b d)+i(a d+b c)|$
+$=\sqrt{(a c-b d)^{2}+(a d+b c)^{2}}=\sqrt{a^{2} c^{2}+b^{2} d^{2}+a^{2} d^{2}+b^{2} c^{2}}$
+However, since
+$|n||m| =|a+i b||c+i d|=\sqrt{a^{2}+b^{2}} \sqrt{c^{2}+d^{2}}$
+$=\sqrt{a^{2} c^{2}+b^{2} d^{2}+a^{2} d^{2}+b^{2} c^{2}}$
+we conclude that $|n m|=|n||m|$
+
+## Problem 44
+(a) We use Eq. 39-44. At $r=0$, $P(r) \propto r^{2}=0$
+(b) At $r=a$, $P(r)=\frac{4}{a^{3}} a^{2} e^{-2 a / a}=\frac{4 e^{-2}}{a}=\frac{4 e^{-2}}{5.29 × 10^{-2} nm}=10.2 nm^{-1}$
+(c) At $r=2 a$, $P(r)=\frac{4}{a^{3}}(2 a)^{2} e^{-4 a / a}=\frac{16 e^{-4}}{a}=\frac{16 e^{-4}}{5.29 × 10^{-2} nm}=5.54 nm^{-1}$
+
+# Chapter 40 All about Atoms
+## Problem 9
+(a) For $\ell=3$, the magnitude of the orbital angular momentum is
+$L=\sqrt{\ell(\ell+1)} \hbar=\sqrt{3(3+1)} \hbar=\sqrt{12} \hbar$
+So the multiple is $\sqrt{12} ≈3.46$
+(b) The magnitude of the orbital dipole moment is
+$\mu_{orb }=\sqrt{\ell(\ell+1)} \mu_{B}=\sqrt{12} \mu_{B}$
+So the multiple is $\sqrt{12} ≈3.46$
+(c) The largest possible value of $m_{\ell}$ is $\ell=3$
+(d) We use $L_{z}=m_{\ell} \hbar$ to calculate the z component of the orbital angular momentum. The multiple is $m_{\ell}=3$
+(e) We use $\mu_{z}=-m_{\ell} \mu_{B}$ to calculate the z component of the orbital magnetic dipole moment. The multiple is $-m_{\ell}=-3$
+(f) We use $cos \theta=m_{\ell} / \sqrt{\ell(\ell+1)}$ to calculate the angle between the orbital angular momentum vector and the z axis. For $\ell=3$ and $m_{\ell}=3$, we have $cos \theta=3 / \sqrt{12}=\sqrt{3} / 2$, or $\theta=30.0^{\circ}$
+(g) For $\ell=3$ and $m_{\ell}=2$, we have $cos \theta=2 / \sqrt{12}=1 / \sqrt{3}$,or $\theta=54.7^{\circ}$
+(h) For $\ell=3$ and $m_{\ell}=-3$, $cos \theta=-3 / \sqrt{12}=-\sqrt{3} / 2$, or $\theta=150^{\circ}$
+
+## Problem 10
+(a) For $\ell=3$, the greatest value of $m_{\ell}$ is $m_{\ell}=3$
+(b) Two states ($m_{s}= \pm \frac{1}{2}$) are available for $m_{\ell}=3$
+(c) Since there are 7 possible values for $m_{\ell}:+3,+2,+1,0,-1,-2,-3$, and two possible values for $m_{s}$, the total number of state available in the subshell $\ell=3$ is $7×2=14$
+
+## Problem 22
+Due to spin degeneracy ($m_{s}= \pm 1 / 2$), each state can accommodate two electrons. Thus, in the energy-level diagram shown, two electrons can be placed in the ground state with energy $E_{1}=4(h^{2} / 8 m L^{2})$, six can occupy the “triple state” with $E_{2}=6(h^{2} / 8 m L^{2})$, and so forth. With 11 electrons, the lowest energy configuration consists of two electrons with $E_{1}=4(h^{2} / 8 m L^{2})$, six electrons with $E_{2}=6(h^{2} / 8 m L^{2})$ and three electrons with $E_{3}=7(h^{2} / 8 m L^{2})$. Thus, we find the ground-state energy of the 11-electron system to be
+$E_{ground }=2 E_{1}+6 E_{2}+3 E_{3}=2\left(\frac{4 h^{2}}{8 m L^{2}}\right)+6\left(\frac{6 h^{2}}{8 m L^{2}}\right)+3\left(\frac{7 h^{2}}{8 m L^{2}}\right)$
+$=[(2)(4)+(6)(6)+(3)(7)]\left(\frac{h^{2}}{8 m L^{2}}\right)=65\left(\frac{h^{2}}{8 m L^{2}}\right)$
+The first excited state of the 11-electron system consists of two electrons with $E_{1}=4(h^{2} / 8 m L^{2})$, five electrons with $E_{2}=6(h^{2} / 8 m L^{2})$ and four electrons with $E_{3}=7(h^{2} / 8 m L^{2})$. Thus, its energy is
+$E_{1 st excited }=2 E_{1}+5 E_{2}+4 E_{3}=2\left(\frac{4 h^{2}}{8 m L^{2}}\right)+5\left(\frac{6 h^{2}}{8 m L^{2}}\right)+4\left(\frac{7 h^{2}}{8 m L^{2}}\right)$
+$=[(2)(4)+(5)(6)+(4)(7)]\left(\frac{h^{2}}{8 m L^{2}}\right)=66\left(\frac{h^{2}}{8 m L^{2}}\right)$
+Thus, the multiple of $h^{2} / 8 m L^{2}$ is 66
+
+## Problem 23
+In terms of the quantum numbers $n_{x}$, $n_{y}$, and $n_{z}$, the single-particle energy levels are given by
+$E_{n_{x}, n_{y}, n_{z}}=\frac{h^{2}}{8 m L^{2}}\left(n_{x}^{2}+n_{y}^{2}+n_{z}^{2}\right)$
+The lowest single-particle level corresponds to $n_{x}=1$, $n_{y}=1$,and $n_{z}=1$ and is $E_{1,1,1}=3(h^{2} / 8 m L^{2})$. There are two electrons with this energy, one with spin up and one with spin down. The next lowest single-particle level is three-fold degenerate in the three integer quantum numbers. The energy is
+$E_{1,1,2}=E_{1,2,1}=E_{2,1,1}=6\left(h^{2} / 8 m L^{2}\right)$
+Each of these states can be occupied by a spin up and a spin down electron, so six electrons in all can occupy the states. This completes the assignment of the eight electrons to single-particle states
+The ground state energy of the system is
+$E_{gr}=(2)(3)\left(h^{2} / 8 m L^{2}\right)+(6)(6)\left(h^{2} / 8 m L^{2}\right)=42\left(h^{2} / 8 m L^{2}\right)$
+Thus, the multiple of $h^{2} / 8 m L^{2}$ is 42
+
+## Problem 31
+The first three shells ($n=1$ through 3), which can accommodate a total of $2+8+18=28$ electrons, are completely filled. For selenium ($Z=34$) there are still $34-28=6$ electrons left. Two of them go to the $4 s$ subshell, leaving the remaining four in the highest occupied subshell, the $4 p$ subshell
+(a) The highest occupied subshell is $4 p$
+(b) There are four electrons in the $4 p$ subshell
+For bromine ($Z=35$) the highest occupied subshell is also the $4 p$ subshell, which contains five electrons
+(c) The highest occupied subshell is $4 p$
+(d) There are five electrons in the $4 p$ subshell
+For krypton ($Z=36$) the highest occupied subshell is also the $4 p$ subshell, which now accommodates six electrons
+(e) The highest occupied subshell is $4 p$
+(f) There are six electrons in the $4 p$ subshell
+
+## Problem 32
+(a) The number of different $m_{\ell}$ values is 3 ($m_{\ell}=1,0,-1$) and the number of different $m_{s}$'s is 2, which we denote as +1/2 and -1/2. The allowed states are: $(1, +1/2, 1, -1/2)$, $(1, +1/2, 0, +1/2)$, $(1, +1/2, 0, -1/2)$, $(1, +1/2,-1, +1/2)$, $(1, +1/2,-1, -1/2)$, $(1, -1/2, 0, +1/2)$, $(1, -1/2, 0, -1/2)$, $(1,-1/2, -1, +1/2)$, $(1,-1/2,-1,-1/2)$, $(0, +1/2, 0,-1/2)$, $(0, +1/2,-1, +1/2)$, $(0, +1/2,-1,-1/2)$, $(0,-1/2,-1, +1/2)$, $(0,-1/2,-1,-1/2)$, $(-1, +1/2,-1,-1/2)$. So, there are 15 states
+(b) There are six states disallowed by the exclusion principle, in which both electrons share the quantum numbers: $(m_{\ell 1}, m_{s 1}, m_{\ell 2}, m_{s 2})=(1,+1/2,1,+1/2)$, $(1,-1/2,1,-1/2)$, $(0, +1/2,0,+1/2)$, $(0,-1/2,0,-1/2)$, $(-1,+1/2,-1,+1/2)$, $(-1,-1/2,-1,-1/2)$. So, if the Pauli exclusion principle is not applied, then there would be $15+6=21$ allowed states

@@ -1,0 +1,119 @@
+# Chapter 26 Current and Resistance
+## Problem 8
+(a) The magnitude of the current density vector is
+$J = \frac{i}{A} = \frac{i}{\pi d^2/4} = \frac{4(1.2×10^{-10} A)}{\pi(2.5×10^{-3} m)^2} = 2.4×10^{-5} A/m^2$
+
+(b) The drift speed of the current-carrying electrons is
+$v_d = \frac{J}{ne} = \frac{2.4×10^{-5} A/m^2}{(8.47×10^{28}/m^3)(1.60×10^{-19} C)} = 1.8×10^{-15} m/s$
+
+## Problem 11
+(a) The current resulting from this non-uniform current density is
+$i = \int_{cylinder} J_a dA = \frac{J_0}{R} \int_{0}^{R} r·2\pi r dr = \frac{2}{3}\pi R^2 J_0 = \frac{2}{3}\pi(3.40×10^{-3} m)^2(5.50×10^{4} A/m^2) = 1.33 A$
+
+(b) In this case,
+$i = \int_{cylinder} J_b dA = \int_{0}^{R} J_0(1-\frac{r}{R})2\pi r dr = \frac{1}{3}\pi R^2 J_0 = \frac{1}{3}\pi(3.40×10^{-3} m)^2(5.50×10^{4} A/m^2) = 0.666 A$
+
+(c) The result is different from that in part (a) because $J_b$ is higher near the center of the cylinder (where the area is smaller for the same radial interval) and lower outward, resulting in a lower average current density over the cross section and consequently a lower current than that in part (a). So, $J_a$ has its maximum value near the surface of the wire.
+
+## Problem 35
+(a) The resistance of the cone is
+$R = \frac{V}{i} = \frac{\rho L}{\pi ab} = \frac{(731 \Omega·m)(1.94×10^{-2} m)}{\pi(2.00×10^{-3} m)(2.30×10^{-3} m)} = 9.81×10^5 \Omega$
+Note that if $b=a$, then $R = \rho L/\pi a^2 = \rho L/A$, where $A = \pi a^2$ is the cross-sectional area of the cylinder.
+
+## Problem 37
+From Eq. 26-25, $\rho \propto \tau^{-1} \propto v_{eff}$. According to Chapter 20, $v_{eff} \propto \sqrt{T}$. Thus, we may conclude that $\rho \propto \sqrt{T}$.
+
+## Problem 54
+(a) We use $P = \varepsilon^2/R_{eq}$, where
+$R_{eq} = 7.00 \Omega + \frac{(12.0 \Omega)(4.00 \Omega)R}{(12.0 \Omega)(4.0 \Omega)+(12.0 \Omega)R+(4.00 \Omega)R}$
+Put $P = 60.0 W$ and $\varepsilon = 24.0 V$ and solve for $R$: $R = 19.5 \Omega$
+
+(b) Since $P \propto R_{eq}$, we must minimize $R_{eq}$, which means $R = 0$
+
+(c) Now we must maximize $R_{eq}$, or set $R = \infty$
+
+(d) Since $R_{eq,min} = 7.00 \Omega$, $P_{max} = \varepsilon^2/R_{eq,min} = (24.0 V)^2/7.00 \Omega = 82.3 W$
+
+(e) Since $R_{eq,max} = 7.00 \Omega + (12.0 \Omega)(4.00 \Omega)/(12.0 \Omega+4.00 \Omega) = 10.0 \Omega$,
+$P_{min} = \varepsilon^2/R_{eq,max} = (24.0 V)^2/10.0 \Omega = 57.6 W$
+
+# Chapter 27 Circuits
+## Problem 45
+(a) The denominators are the same and each has the value
+$(b^2-a^2)\rho_C + a^2\rho_A = [(0.380×10^{-3} m)^2-(0.250×10^{-3} m)^2](1.69×10^{-8} \Omega·m)+(0.250×10^{-3} m)^2(2.75×10^{-8} \Omega·m) = 3.10×10^{-15} \Omega·m^3$
+Thus,
+$i_C = \frac{(0.250×10^{-3} m)^2(2.75×10^{-8} \Omega·m)(2.00 A)}{3.10×10^{-15} \Omega·m^3} = 1.11 A$
+
+(b) Similarly,
+$i_A = \frac{[(0.380×10^{-3} m)^2-(0.250×10^{-3} m)^2](1.69×10^{-8} \Omega·m)(2.00 A)}{3.10×10^{-15} \Omega·m^3} = 0.893 A$
+
+(c) Consider the copper wire. If $V$ is the potential difference, then the current is given by $V = i_CR_C = i_C\rho_CL/\pi a^2$, so the length of the composite wire is
+$L = \frac{\pi a^2 V}{i_C\rho_C} = \frac{\pi(0.250×10^{-3} m)^2(12.0 V)}{(1.11 A)(1.69×10^{-8} \Omega·m)} = 126 m$
+
+## Problem 48
+(a) We use $P = \varepsilon^2/R_{eq}$, where
+$R_{eq} = 7.00 \Omega + \frac{(12.0 \Omega)(4.00 \Omega)R}{(12.0 \Omega)(4.0 \Omega)+(12.0 \Omega)R+(4.00 \Omega)R}$
+Put $P = 60.0 W$ and $\varepsilon = 24.0 V$ and solve for $R$: $R = 19.5 \Omega$
+
+(b) Since $P \propto R_{eq}$, we must minimize $R_{eq}$, which means $R = 0$
+
+(c) Now we must maximize $R_{eq}$, or set $R = \infty$
+
+(d) Since $R_{eq,min} = 7.00 \Omega$, $P_{max} = \varepsilon^2/R_{eq,min} = (24.0 V)^2/7.00 \Omega = 82.3 W$
+
+(e) Since $R_{eq,max} = 7.00 \Omega + (12.0 \Omega)(4.00 \Omega)/(12.0 \Omega+4.00 \Omega) = 10.0 \Omega$,
+$P_{min} = \varepsilon^2/R_{eq,max} = (24.0 V)^2/10.0 \Omega = 57.6 W$
+
+## Problem 63
+(a) The voltage difference $V$ across the capacitor is $V(t) = \varepsilon(1-e^{-t/RC})$. At $t = 1.30 \mu s$ we have $V(t) = 5.00 V$, so $5.00 V = (12.0 V)(1-e^{-1.30 \mu s/RC})$, which gives
+$\tau = (1.30 \mu s)/ln(12/7) = 2.41 \mu s$
+
+(b) The capacitance is $C = \tau/R = (2.41 \mu s)/(15.0 k\Omega) = 161 pF$
+
+## Problem 66
+We apply Eq. 27-39 to each capacitor, demand their initial charges are in a ratio of 3:2 as described in the problem, and solve for the time. With
+$\tau_1 = R_1C_1 = (20.0 \Omega)(5.00×10^{-6} F) = 1.00×10^{-4} s$
+$\tau_2 = R_2C_2 = (10.0 \Omega)(8.00×10^{-6} F) = 8.00×10^{-5} s$
+we obtain
+$t = \frac{ln(3/2)}{\tau_2^{-1}-\tau_1^{-1}} = \frac{ln(3/2)}{1.25×10^4 s^{-1}-1.00×10^4 s^{-1}} = 1.62×10^{-4} s$
+
+## Problem 68
+We use Eq. 26-17: $\rho - \rho_0 = \rho\alpha(T-T_0)$, and solve for $T$
+$T = T_0 + \frac{1}{\alpha}(\frac{\rho}{\rho_0}-1) = 20^{\circ}C + \frac{1}{4.3×10^{-3}/K}(\frac{58 \Omega}{50 \Omega}-1) = 57^{\circ}C$
+We are assuming that $\rho/\rho_0 = R/R_0$
+
+# Chapter 28 Magnetic Fields
+## Problem 6
+The magnetic force on the proton is given by $\vec{F} = q\vec{v}×\vec{B}$, where $q=+e$. Using Eq. 3-30 this becomes
+$(4×10^{-17})\hat{i}+(2×10^{-17})\hat{j} = e[(0.03v_y+40)\hat{i}+(20-0.03v_x)\hat{j}-(0.02v_x+0.01v_y)\hat{k}]$
+with SI units understood. Equating corresponding components, we find
+(a) $v_x = -3.5×10^3 m/s$
+(b) $v_y = 7.0×10^3 m/s$
+
+## Problem 12
+(a) The force due to the electric field is distinguished from that associated with the magnetic field in that the latter vanishes when the speed is zero and the former is independent of speed. The graph shows that the force (y-component) is negative at $v=0$ (specifically, its value is $-2.0×10^{-19} N$ there), which (because $q=-e$) implies that the electric field points in the $+y$ direction. Its magnitude is
+$E = \frac{F_{net,y}}{|q|} = \frac{2.0×10^{-19} N}{1.6×10^{-19} C} = 1.25 N/C = 1.25 V/m$
+
+(b) We are told that the x and z components of the force remain zero throughout the motion, implying that the electron continues to move along the x axis, even though magnetic forces generally cause the paths of charged particles to curve. The exception to this is when the forces due to the electric and magnetic fields cancel. This implies (Eq. 28-7) $B = E/v = 2.50×10^{-2} T$. For $\vec{F}_B = q\vec{v}×\vec{B}$ to be in the opposite direction of $\vec{F}_E = q\vec{E}$, we must have $\vec{B}$ in the opposite direction from $\vec{v}×\vec{E}$. Since $\vec{E}$ points in the $+y$ direction and the velocity is in the $+x$ direction, then (using the right-hand rule) we conclude that the magnetic field must point in the $+z$ direction ($\hat{i}×\hat{k}=-\hat{j}$). In unit-vector notation, we have $\vec{B} = (2.50×10^{-2} T)\hat{k}$
+
+## Problem 34
+(a) Using Eq. 28-16, we obtain
+$v = \frac{|F|}{e|\vec{B}|} = 4.99×10^6 m/s$
+
+(b) Using either Eq. 28-14 or Eq. 28-16, we find $r = 0.00710 m$
+
+(c) Using Eq. 28-17 (in either its first or last form) readily yields $T = 8.93×10^{-9} s$
+
+## Problem 48
+We use $d\vec{F}_B = i d\vec{L}×\vec{B}$, where $d\vec{L} = dx\hat{i}$ and $\vec{B} = B_x\hat{i}+B_y\hat{j}$. Thus,
+$\vec{F}_B = \int i d\vec{L}×\vec{B} = \int_{x_i}^{x_f} i dx\hat{i}×(B_x\hat{i}+B_y\hat{j}) = i\int_{x_i}^{x_f} B_y dx\hat{k} = (-5.0 A)(\int_{1.0}^{3.0}8.0x^2 dx)(m·mT)\hat{k} = (-0.35 N)\hat{k}$
+
+## Problem 52
+From $\tau_{max} = |\vec{\mu}×\vec{B}|_{max} = \mu B = i\pi r^2 B$ and note that $i = qf = qv/2\pi r$. So
+$\tau_{max} = (\frac{qv}{2\pi r})\pi r^2 B = \frac{1}{2}qvrB = \frac{1}{2}(1.60×10^{-19} C)(2.19×10^6 m/s)(5.29×10^{-11} m)(7.10×10^{-3} T) = 6.58×10^{-26} N·m$
+
+## Problem 62
+Looking at the point in the graph corresponding to $i_2=0$ (which means that coil 2 has no magnetic moment) we are led to conclude that the magnetic moment of coil 1 must be $\mu_1 = 2.0×10^{-5} A·m^2$. Looking at the point where the line crosses the axis (at $i_2 = 5.0 mA$) we conclude (since the magnetic moments cancel there) that the magnitude of coil 2’s moment must also be $\mu_2 = 2.0×10^{-5} A·m^2$ when $i_2 = 0.0050 A$, which means (Eq. 28-35)
+$N_2A_2 = \frac{\mu_2}{i_2} = \frac{2.0×10^{-5} A·m^2}{0.0050 A} = 4.0×10^{-3} m^2$
+Now the problem has us consider the direction of coil 2’s current changed so that the net moment is the sum of two (positive) contributions, from coil 1 and coil 2, specifically for the case that $i_2 = 0.007 A$. We find that total moment is
+$\mu = (2.0×10^{-5} A·m^2)+(N_2A_2i_2) = 4.8×10^{-5} A·m^2$

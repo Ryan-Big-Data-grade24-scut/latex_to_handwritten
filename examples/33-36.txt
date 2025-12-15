@@ -1,0 +1,123 @@
+# Chapter 33 Electromagnetic Waves
+## Problem 13
+A concave mirror has a positive value of focal length.
+(a) With $f=+18\ \text{cm}$ and $p=+12\ \text{cm}$, the radius of curvature is $r=2f=+36\ \text{cm}$.
+(b) Equation 34-9 yields $i=pf/(p-f)=-36\ \text{cm}$.
+(c) Then, by Eq. 34-7, $m=-i/p=+3.0$.
+(d) Since the image distance is negative, the image is virtual (V).
+(e) The magnification computation produced a positive value, so it is upright [not inverted] (NI).
+(f) A virtual image is formed on the opposite side of the mirror from the object.
+
+## Problem 31
+Consider the figure shown to the right. The y-component of the force cancels out, and we’re left with the x-component:
+$dF_x=2dF\cos\theta=2(p_r dA)\cos\theta$.
+Using the result from Problem 98: $p_r=(2I/c)\cos^2\theta$, and $dA=RLd\theta$, where $L$ is the length of the cylinder, we obtain
+$\frac{F_x}{L}=\int 2(2I\cos\theta/c)\cos\theta R d\theta=\frac{4IR}{c}\int_{0}^{\pi/2}\cos^3\theta d\theta=\frac{8IR}{3c}$.
+
+## Problem 40
+We examine the point where the graph reaches zero: $\theta_2=160^\circ$. Since the polarizers must be “crossed” for the intensity to vanish, then $\theta_1=160^\circ-90^\circ=70^\circ$. Now we consider the case $\theta_2=90^\circ$ (which is hard to judge from the graph). Since $\theta_1$ is still equal to 70º, then the angle between the polarizers is now $\Delta\theta=20^\circ$. Accounting for the “automatic” reduction (by a factor of one-half) whenever unpolarized light passes through any polarizing sheet, then our result is
+$\frac{1}{2}\cos^2(\Delta\theta)=0.442\approx44\%$.
+
+## Problem 51
+(a) Approximating $n=1$ for air, we have
+$n_1\sin\theta_1=(1)\sin\theta_5\Rightarrow56.9^\circ=\theta_5$
+and with the more accurate value for $n_{air}$ in Table 33-1, we obtain 56.8°.
+(b) Equation 33-44 leads to
+$n_1\sin\theta_1=n_2\sin\theta_2=n_3\sin\theta_3=n_4\sin\theta_4$
+so that
+$\theta_4=\sin^{-1}\left(\frac{n_1}{n_4}\sin\theta_1\right)=35.3^\circ$.
+
+## Problem 65
+Reference to Fig. 33-61 may help in the visualization of why there appears to be a “circle of light” (consider revolving that picture about a vertical axis). The depth and the radius of that circle (which is from point a to point f in that figure) is related to the tangent of the angle of incidence. Thus, the diameter $D$ of the circle in question is
+$D=2h\tan\theta_c=2h\tan\left(\sin^{-1}\left(\frac{1}{n_w}\right)\right)=2(80.0\ \text{cm})\tan\left(\sin^{-1}\left[\frac{1}{1.33}\right]\right)=182\ \text{cm}$.
+
+
+# Chapter 35 Interference
+## Problem 13
+(a) We choose a horizontal x axis with its origin at the left edge of the plastic. Between $x=0$ and $x=L_2$ the phase difference is that given by Eq. 35-11 (with $L$ in that equation replaced with $L_2$). Between $x=L_2$ and $x=L_1$ the phase difference is given by an expression similar to Eq. 35-11 but with $L$ replaced with $L_1-L_2$ and $n_2$ replaced with 1 (since the top ray in Fig. 35-36 is now traveling through air, which has index of refraction approximately equal to 1). Thus, combining these phase differences with $\lambda=0.600\ \mu\text{m}$, we have
+$\frac{L_2}{\lambda}(n_2-n_1)+\frac{L_1-L_2}{\lambda}(1-n_1)=\frac{3.50\ \mu\text{m}}{0.600\ \mu\text{m}}(1.60-1.40)+\frac{4.00\ \mu\text{m}-3.50\ \mu\text{m}}{0.600\ \mu\text{m}}(1-1.40)=0.833$.
+(b) Since the answer in part (a) is closer to an integer than to a half-integer, the interference is more nearly constructive than destructive.
+
+## Problem 23
+Initially, source A leads source B by 90°, which is equivalent to $1/4$ wavelength. However, source A also lags behind source B since $r_A$ is longer than $r_B$ by 100 m, which is $100\ \text{m}/400\ \text{m}=1/4$ wavelength. So the net phase difference between A and B at the detector is zero.
+
+## Problem 33
+With phasor techniques, this amounts to a vector addition problem $\vec{R}=\vec{A}+\vec{B}+\vec{C}$ where (in magnitude-angle notation) $\vec{A}=10\angle0^\circ$, $\vec{B}=5\angle45^\circ$, and $\vec{C}=5\angle-45^\circ$ where the magnitudes are understood to be in $\mu\text{V/m}$. We obtain the resultant (especially efficient on a vector-capable calculator in polar mode):
+$\vec{R}=10\angle0^\circ+5\angle45^\circ+5\angle-45^\circ=17.1\angle0^\circ$
+which leads to
+$E_R=(17.1\ \mu\text{V/m})\sin\omega t$
+where $\omega=2.0\times10^{14}\ \text{rad/s}$.
+
+## Problem 69
+Assume the wedge-shaped film is in air, so the wave reflected from one surface undergoes a phase change of $\pi$ rad while the wave reflected from the other surface does not. At a place where the film thickness is $L$, the condition for fully constructive interference is $2nL=(m+\frac{1}{2})\lambda$, where $n$ is the index of refraction of the film, $\lambda$ is the wavelength in vacuum, and $m$ is an integer. The ends of the film are bright. Suppose the end where the film is narrow has thickness $L_1$ and the bright fringe there corresponds to $m=m_1$. Suppose the end where the film is thick has thickness $L_2$ and the bright fringe there corresponds to $m=m_2$. Since there are ten bright fringes, $m_2=m_1+9$. Subtract $2nL_1=(m_1+\frac{1}{2})\lambda$ from $2nL_2=(m_1+9+\frac{1}{2})\lambda$ to obtain $2n\Delta L=9\lambda$, where $\Delta L=L_2-L_1$ is the change in the film thickness over its length. Thus,
+$\Delta L=\frac{9\lambda}{2n}=\frac{9(630\times10^{-9}\ \text{m})}{2(1.50)}=1.89\times10^{-6}\ \text{m}$.
+
+## Problem 81
+Let the distance in question be $x$. The path difference (between rays originating from $S_1$ and $S_2$ and arriving at points on the $x>0$ axis) is
+$\sqrt{d^2+x^2}-x=(m+\frac{1}{2})\lambda$,
+where we are requiring destructive interference (half-integer wavelength phase differences) and $m=0,1,2,\dots$. After some algebraic steps, we solve for the distance in terms of $m$:
+$x=\frac{d^2}{(2m+1)\lambda}-\frac{(2m+1)\lambda}{4}$.
+To obtain the largest value of $x$, we set $m=0$:
+$x_0=\frac{d^2}{\lambda}-\frac{\lambda}{4}=\frac{(3.00\lambda)^2}{\lambda}-\frac{\lambda}{4}=8.75\lambda=8.75(900\ \text{nm})=7.88\times10^3\ \text{nm}=7.88\ \mu\text{m}$.
+
+
+# Chapter 36 Diffraction
+## Problem 17
+(a) The intensity for a single-slit diffraction pattern is given by
+$I=I_m\frac{\sin^2\alpha}{\alpha^2}$
+where $\alpha$ is described in the text (see Eq. 36-6). To locate the extrema, we set the derivative of $I$ with respect to $\alpha$ equal to zero and solve for $\alpha$. The derivative is
+$\frac{dI}{d\alpha}=2I_m\frac{\sin\alpha}{\alpha^3}(\alpha\cos\alpha-\sin\alpha)$.
+The derivative vanishes if $\alpha\neq0$ but $\sin\alpha=0$. This yields $\alpha=m\pi$, where $m$ is a nonzero integer. These are the intensity minima: $I=0$ for $\alpha=m\pi$. The derivative also vanishes for $\alpha\cos\alpha-\sin\alpha=0$. This condition can be written $\tan\alpha=\alpha$. These implicitly locate the maxima.
+(b) The values of $\alpha$ that satisfy $\tan\alpha=\alpha$ can be found by trial and error on a pocket calculator or computer. Each of them is slightly less than one of the values $(m+\frac{1}{2})\pi$ rad, so we start with these values. They can also be found graphically. As in the diagram that follows, we plot $y=\tan\alpha$ and $y=\alpha$ on the same graph. The intersections of the line with the $\tan\alpha$ curves are the solutions. The smallest $\alpha$ is $\alpha=0$.
+(c) We write $\alpha=(m+\frac{1}{2})\pi$ for the maxima. For the central maximum, $\alpha=0$ and $m=-1/2=-0.500$.
+(d) The next one can be found to be $\alpha=4.493\ \text{rad}$.
+(e) For $\alpha=4.4934$, $m=0.930$.
+(f) The next one can be found to be $\alpha=7.725\ \text{rad}$.
+(g) For $\alpha=7.7252$, $m=1.96$.
+
+## Problem 31
+(a) The first minimum in the diffraction pattern is at $5.00^\circ$, so
+$a=\frac{\lambda}{\sin\theta}=\frac{0.440\ \mu\text{m}}{\sin5.00^\circ}=5.05\ \mu\text{m}$.
+(b) Since the fourth bright fringe is missing, $d=4a=4(5.05\ \mu\text{m})=20.2\ \mu\text{m}$.
+(c) For the $m=1$ bright fringe,
+$\alpha=\frac{\pi a\sin\theta}{\lambda}=\frac{\pi(5.05\ \mu\text{m})\sin1.25^\circ}{0.440\ \mu\text{m}}=0.787\ \text{rad}$.
+Consequently, the intensity of the $m=1$ fringe is
+$I=I_m\left(\frac{\sin\alpha}{\alpha}\right)^2=(7.0\ \text{mW/cm}^2)\left(\frac{\sin0.787\ \text{rad}}{0.787}\right)^2=5.7\ \text{mW/cm}^2$,
+which agrees with Fig. 36-45. Similarly for $m=2$, the intensity is $I=2.9\ \text{mW/cm}^2$, also in agreement with Fig. 36-45.
+
+## Problem 39
+(a) The first minimum of the diffraction pattern is at $5.00^\circ$, so
+$a=\frac{\lambda}{\sin\theta}=\frac{0.440\ \mu\text{m}}{\sin5.00^\circ}=5.05\ \mu\text{m}$.
+(b) Since the fourth bright fringe is missing, $d=4a=4(5.05\ \mu\text{m})=20.2\ \mu\text{m}$.
+(c) For the $m=1$ bright fringe,
+$\alpha=\frac{\pi a\sin\theta}{\lambda}=\frac{\pi(5.05\ \mu\text{m})\sin1.25^\circ}{0.440\ \mu\text{m}}=0.787\ \text{rad}$.
+Consequently, the intensity of the $m=1$ fringe is
+$I=I_m\left(\frac{\sin\alpha}{\alpha}\right)^2=(7.0\ \text{mW/cm}^2)\left(\frac{\sin0.787\ \text{rad}}{0.787}\right)^2=5.7\ \text{mW/cm}^2$,
+which agrees with Fig. 36-45. Similarly for $m=2$, the intensity is $I=2.9\ \text{mW/cm}^2$, also in agreement with Fig. 36-45.
+
+## Problem 51
+(a) We note that $d=(1.00\ \text{mm})/180=0.0056\ \text{mm}$, we write Eq. 36-25 as
+$\theta=\sin^{-1}\left(\frac{m\lambda}{d}\right)=\sin^{-1}(180m\lambda)$
+where $\lambda_1=4\times10^{-4}\ \text{mm}$ and $\lambda_2=5\times10^{-4}\ \text{mm}$. Thus, $\Delta\theta=\theta_2-\theta_1=2.1^\circ$.
+(b) Use of Eq. 36-25 for each wavelength leads to the condition
+$m_1\lambda_1=m_2\lambda_2$
+for which the smallest possible choices are $m_1=5$ and $m_2=4$. Returning to Eq. 36-25, then, we find
+$\theta=\sin^{-1}\left(\frac{m_1\lambda_1}{d}\right)=\sin^{-1}\left(\frac{5(4.0\times10^{-4}\ \text{mm})}{0.0056\ \text{mm}}\right)=\sin^{-1}(0.36)=21^\circ$.
+(c) There are no refraction angles greater than 90°, so we can solve for “$m_{\text{max}}$” (realizing it might not be an integer):
+$m_{\text{max}}=\frac{d\sin90^\circ}{\lambda_2}=\frac{d}{\lambda_2}=\frac{0.0056\ \text{mm}}{5.0\times10^{-4}\ \text{mm}}\approx11$
+where we have rounded down. There are no values of $m$ (for light of wavelength $\lambda_2$) greater than $m=11$.
+
+## Problem 63
+The angular positions of the first-order diffraction lines are given by $d\sin\theta=\lambda$. Let $\lambda_1$ be the shorter wavelength (430 nm) and $\theta$ be the angular position of the line associated with it. Let $\lambda_2$ be the longer wavelength (680 nm), and let $\theta+\Delta\theta$ be the angular position of the line associated with it. Here $\Delta\theta=20^\circ$. Then,
+$\lambda_1=d\sin\theta$, $\lambda_2=d\sin(\theta+\Delta\theta)$.
+We write $\sin(\theta+\Delta\theta)$ as $\sin\theta\cos\Delta\theta+\cos\theta\sin\Delta\theta$, then use the equation for the first line to replace $\sin\theta$ with $\lambda_1/d$, and $\cos\theta$ with $\sqrt{1-\lambda_1^2/d^2}$. After multiplying by $d$, we obtain
+$\lambda_1\cos\Delta\theta+\sqrt{d^2-\lambda_1^2}\sin\Delta\theta=\lambda_2$.
+Solving for $d$, we find
+$d=\sqrt{\frac{(\lambda_2-\lambda_1\cos\Delta\theta)^2+(\lambda_1\sin\Delta\theta)^2}{\sin^2\Delta\theta}}=914\ \text{nm}=9.14\times10^{-4}\ \text{mm}$.
+There are $1/d=1/(9.14\times10^{-4}\ \text{mm})=1.09\times10^3$ rulings per mm.
+
+## Problem 70
+The angle of incidence on the reflection planes is $\theta=63.8^\circ-45.0^\circ=18.8^\circ$, and the plane-plane separation is $d=a_0/\sqrt{2}$. Thus, using $2d\sin\theta=\lambda$, we get
+$a_0=\sqrt{2}d=\frac{\sqrt{2}\lambda}{2\sin\theta}=\frac{0.260\ \text{nm}}{\sqrt{2}\sin18.8^\circ}=0.570\ \text{nm}$.
+
+当前文件内容过长，豆包只阅读了前 95%。
