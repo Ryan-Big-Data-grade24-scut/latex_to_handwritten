@@ -114,6 +114,9 @@ class LatexToHandwritten:
         if max_score is None:
             max_score = config.get('max_score', 15)
         
+        # 关键修复：确保反斜杠被正确处理，防止\f被解释为换页符
+        # 无需额外处理，因为文件读取时已经正确处理了反斜杠
+        
         # 如果是markdown，先转换为纯文本
         if markdown:
             # 将markdown转换为纯文本（移除markdown语法）
@@ -285,12 +288,17 @@ class LatexToHandwritten:
         # 渲染路径选择
         if mixed_rendering and has_formulas:
             # 路径3：混合渲染，正文随机字体，公式传统渲染
+            # 关键修复：先处理latex文本中的反斜杠问题
+            latex = latex.replace('\x0c', '\\f')
             img = self._render_mixed_content(latex, resolution, a4, figsize, bg_color, text_color, randomness)
         elif random_fonts and self.all_ttf_fonts and not has_formulas:
             # 路径1：纯文本，使用随机字体渲染
             img = self._render_with_random_fonts(latex, resolution, a4, figsize, bg_color, text_color, randomness)
         else:
             # 路径2：包含公式或不使用随机字体，使用传统渲染
+            # 关键修复：先处理latex文本中的反斜杠问题
+            latex = latex.replace('\x0c', '\\f')
+            
             # 选择字体
             font_path = self.available_fonts.get(font, None)
             
@@ -306,11 +314,17 @@ class LatexToHandwritten:
                 plt.rcParams['font.family'] = ['sans-serif']
                 plt.rcParams['font.sans-serif'] = [font_name, 'SimHei']
                 
-                # 设置数学公式也使用该字体
-                plt.rcParams['mathtext.fontset'] = 'custom'
-                plt.rcParams['mathtext.rm'] = font_name
-                plt.rcParams['mathtext.it'] = f'{font_name}:italic'
-                plt.rcParams['mathtext.bf'] = f'{font_name}:bold'
+                # 关键修复：使用stix字体集确保公式正确显示
+                plt.rcParams['mathtext.fontset'] = 'stix'
+                plt.rcParams['mathtext.rm'] = 'stixregular'
+                plt.rcParams['mathtext.it'] = 'stixitalic'
+                plt.rcParams['mathtext.bf'] = 'stixbold'
+            else:
+                # 关键修复：使用stix字体集确保公式正确显示
+                plt.rcParams['mathtext.fontset'] = 'stix'
+                plt.rcParams['mathtext.rm'] = 'stixregular'
+                plt.rcParams['mathtext.it'] = 'stixitalic'
+                plt.rcParams['mathtext.bf'] = 'stixbold'
             
             # 创建一个临时图来渲染LaTeX
             fig, ax = plt.subplots(figsize=figsize, dpi=resolution)
@@ -366,9 +380,17 @@ class LatexToHandwritten:
         """
         parts = []
         
-        # 匹配$...$、$$...$$和\[...\]公式
-        # 注意：这是简化实现，可能无法处理嵌套情况
-        formula_pattern = r'(\$\$.*?\$\$)|(\$[^$\n]*\$)|(\\\[.*?\\\])'
+        # 关键修复：使用更简单可靠的方式提取公式
+        # 先处理行内公式 $...$
+        # 先处理块级公式 $$...$$
+        # 使用非贪婪匹配，确保正确分割
+        
+        # 特殊处理：将可能被错误解释的\f等替换回正确的\frac形式
+        text = text.replace('\x0c', '\\f')  # 修复\f被解释为换页符的问题
+        
+        # 匹配所有公式类型
+        # 注意：使用原始字符串r前缀，确保正则表达式正确处理反斜杠
+        formula_pattern = r'(\$\$.*?\$\$)|(\$[^$\n]*?\$)'  # 只匹配$和$$公式
         
         last_end = 0
         for match in re.finditer(formula_pattern, text, re.DOTALL):
@@ -377,7 +399,8 @@ class LatexToHandwritten:
                 parts.append(('text', text[last_end:match.start()]))
             
             # 公式部分
-            parts.append(('formula', match.group()))
+            formula_content = match.group()
+            parts.append(('formula', formula_content))
             
             last_end = match.end()
         
@@ -633,11 +656,14 @@ class LatexToHandwritten:
         plt.rcParams['font.sans-serif'] = ['SimHei']
         plt.rcParams['axes.unicode_minus'] = False
         
-        # 确保使用正确的数学字体配置
-        plt.rcParams['mathtext.fontset'] = 'cm'
-        plt.rcParams['mathtext.rm'] = 'serif'
-        plt.rcParams['mathtext.it'] = 'serif:italic'
-        plt.rcParams['mathtext.bf'] = 'serif:bold'
+        # 确保使用正确的数学字体配置，解决公式显示问题
+        plt.rcParams['mathtext.fontset'] = 'stix'
+        plt.rcParams['mathtext.rm'] = 'stixregular'
+        plt.rcParams['mathtext.it'] = 'stixitalic'
+        plt.rcParams['mathtext.bf'] = 'stixbold'
+        
+        # 额外修复：确保公式中的\frac正确显示
+        latex = latex.replace('\x0c', '\\f')
         
         # 创建一个临时图来渲染LaTeX
         fig, ax = plt.subplots(figsize=figsize, dpi=resolution)
