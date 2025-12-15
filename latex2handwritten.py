@@ -516,6 +516,12 @@ class LatexToHandwritten:
                 # 公式内容，使用传统渲染
                 formula = item['content']
                 
+                # 设置matplotlib使用mathtext渲染公式
+                plt.rcParams['text.usetex'] = False
+                plt.rcParams['mathtext.fontset'] = 'stix'
+                plt.rcParams['font.family'] = ['sans-serif']
+                plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']
+                
                 # 创建临时图来渲染LaTeX公式
                 temp_fig, temp_ax = plt.subplots(figsize=(8, 2), dpi=resolution)
                 
@@ -531,6 +537,9 @@ class LatexToHandwritten:
                 
                 # 隐藏坐标轴
                 temp_ax.axis('off')
+                
+                # 调整边距
+                plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
                 
                 # 保存临时图片到内存
                 temp_buffer = BytesIO()
@@ -587,21 +596,9 @@ class LatexToHandwritten:
         返回:
             PIL.Image - 渲染后的图片
         """
-        if mixed_rendering:
-            # 使用混合渲染
+        if mixed_rendering or (random_fonts and self.all_ttf_fonts):
+            # 使用混合渲染，无论是指定了mixed_rendering还是random_fonts
             img = self._render_mixed_content(content_items, figsize, resolution, bg_color, text_color, randomness)
-        elif random_fonts and self.all_ttf_fonts:
-            # 使用随机字体渲染
-            # 合并所有内容为纯文本
-            pure_text = ''
-            for item in content_items:
-                if item['type'] == 'text':
-                    pure_text += item['content'] + '\n'
-                elif item['type'] == 'formula':
-                    pure_text += f"${item['content']}$\n"
-            
-            # 使用随机字体渲染
-            img = self._render_with_random_fonts(pure_text, resolution, False, figsize, bg_color, text_color, randomness)
         else:
             # 使用传统渲染
             # 创建一个临时图来渲染LaTeX
