@@ -21,8 +21,8 @@
             "random_fonts": true,
             "mixed_rendering": true,
             "process_latex_markers": true,
-            "max_chars": 50,
-            "max_score": 5
+            "max_chars": 30,
+            "max_score": 25
         }
     }
 }

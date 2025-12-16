@@ -136,10 +136,37 @@ class LatexToHandwritten:
             # 生成输出文件名
             if len(pages) > 1:
                 # 多页输出，添加页码
-                base_name, ext = os.path.splitext(output_file)
-                page_output_file = f"{base_name}_page_{i+1}{ext}"
+                
+                # 检查output_file是否是目录路径
+                if os.path.isdir(output_file) or (not os.path.splitext(output_file)[1] and len(pages) > 1):
+                    # 如果是目录或没有扩展名的路径（通常是GUI选择的文件夹输出）
+                    # 使用output_file作为目录路径
+                    dir_path = output_file
+                    # 使用默认的base_name
+                    base_name = "output"
+                    # 扩展名始终使用format参数
+                    ext = f".{format}"
+                else:
+                    # 分离目录路径和文件名
+                    dir_path = os.path.dirname(output_file)
+                    file_name = os.path.basename(output_file)
+                    
+                    # 分离文件名和扩展名
+                    base_name, ext = os.path.splitext(file_name)
+                    
+                    # 如果没有扩展名，使用format参数作为默认扩展名
+                    if not ext:
+                        ext = f".{format}"
+                
+                # 重新组合完整路径
+                page_file_name = f"{base_name}_page_{i+1}{ext}"
+                page_output_file = os.path.join(dir_path, page_file_name)
             else:
                 # 单页输出
+                # 检查是否有扩展名，没有则添加
+                base_name, ext = os.path.splitext(output_file)
+                if not ext:
+                    output_file = f"{output_file}.{format}"
                 page_output_file = output_file
             
             # 保存最终图片

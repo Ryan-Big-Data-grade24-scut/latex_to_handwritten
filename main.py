@@ -54,7 +54,11 @@ def main(latex, output, font, resolution, width, height, randomness, bg_color, t
         click.echo("错误：没有提供LaTeX内容，请使用参数或文件输入")
         return
     
-    output = os.path.join("examples", output)
+    # 只有当output是简单文件名（不是绝对路径，也不是包含目录的路径）时，才默认保存到examples目录
+    # 对于绝对路径或包含目录的路径，直接使用用户指定的路径
+    if not os.path.isabs(output) and '\\' not in output and '/' not in output and ':' not in output:
+        # 保持向后兼容，默认保存到examples目录
+        output = os.path.join("examples", output)
     
     try:
         # 调用转换函数

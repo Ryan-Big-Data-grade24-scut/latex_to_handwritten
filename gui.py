@@ -148,6 +148,24 @@ class LatexToHandwrittenGUI:
         self.randomness_label.pack(side=tk.LEFT, padx=5)
         self.randomness_scale.bind("<Motion>", self.update_randomness_label)
         
+        # 每行最大字符数
+        max_chars_row = ttk.Frame(left_options)
+        max_chars_row.pack(fill=tk.X, pady=5)
+        
+        ttk.Label(max_chars_row, text="Max Chars per Line:").pack(side=tk.LEFT, padx=5)
+        self.max_chars_var = tk.IntVar(value=50)
+        self.max_chars_spinbox = ttk.Spinbox(max_chars_row, from_=10, to=200, increment=5, textvariable=self.max_chars_var)
+        self.max_chars_spinbox.pack(side=tk.LEFT, padx=5, fill=tk.X, expand=True)
+        
+        # 每页最大分数
+        max_score_row = ttk.Frame(left_options)
+        max_score_row.pack(fill=tk.X, pady=5)
+        
+        ttk.Label(max_score_row, text="Max Score per Page:").pack(side=tk.LEFT, padx=5)
+        self.max_score_var = tk.IntVar(value=15)
+        self.max_score_spinbox = ttk.Spinbox(max_score_row, from_=5, to=50, increment=5, textvariable=self.max_score_var)
+        self.max_score_spinbox.pack(side=tk.LEFT, padx=5, fill=tk.X, expand=True)
+        
         # 右侧选项
         right_options = ttk.Frame(render_frame)
         right_options.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=5)
@@ -295,6 +313,10 @@ class LatexToHandwrittenGUI:
                 # 确保输出文件夹存在
                 os.makedirs(output_path, exist_ok=True)
             
+            # 获取分页参数
+            max_chars = self.max_chars_var.get()
+            max_score = self.max_score_var.get()
+            
             output_files = convert_latex(
                 latex=latex_content,
                 output_file=output_path,
@@ -305,7 +327,9 @@ class LatexToHandwrittenGUI:
                 markdown=markdown,
                 random_fonts=random_fonts,
                 mixed_rendering=mixed_rendering,
-                format=format  # 传递格式参数
+                format=format,  # 传递格式参数
+                max_chars=max_chars,  # 传递每行最大字符数
+                max_score=max_score  # 传递每页最大分数
             )
             
             # 更新状态
@@ -348,6 +372,10 @@ class LatexToHandwrittenGUI:
             self.mixed_rendering_var.set(preset_config["mixed_rendering"])
         if "process_latex_markers" in preset_config:
             self.process_latex_markers_var.set(preset_config["process_latex_markers"])
+        if "max_chars" in preset_config:
+            self.max_chars_var.set(preset_config["max_chars"])
+        if "max_score" in preset_config:
+            self.max_score_var.set(preset_config["max_score"])
         
         self.status_var.set(f"Loaded preset: {preset_name}")
         messagebox.showinfo("Success", f"Successfully loaded preset: {preset_name}")
@@ -366,6 +394,8 @@ class LatexToHandwrittenGUI:
         self.random_fonts_var.set(False)
         self.mixed_rendering_var.set(False)
         self.process_latex_markers_var.set(False)
+        self.max_chars_var.set(50)  # 重置每行最大字符数到默认值
+        self.max_score_var.set(15)  # 重置每页最大分数到默认值
         self.status_var.set("Ready")
 
 if __name__ == "__main__":

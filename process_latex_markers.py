@@ -26,12 +26,7 @@ def process_latex_markers(content):
     content = re.sub(r'\\\[([^\]]+)\\\]', r'$$\1$$', content, flags=re.DOTALL)
     content = re.sub(r'\\\(([^\)]+)\\\)', r'$\1$', content, flags=re.DOTALL)
     
-    # 替换特殊字符
-    content = re.sub(r'\\alpha', r'\alpha', content)
-    content = re.sub(r'\\beta', r'\beta', content)
-    content = re.sub(r'\\gamma', r'\gamma', content)
-    content = re.sub(r'\\delta', r'\delta', content)
-    content = re.sub(r'\\epsilon', r'\epsilon', content)
+    # 替换特殊字符 - 移除了会导致正则表达式错误的行
     
     # 替换换行符
     content = re.sub(r'\\\\', r'\n', content)
